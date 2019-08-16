@@ -26,4 +26,13 @@ class HomeController extends Controller
         //return view('home');
         return view('admin.home.homeContent');
     }
+    public function venue(){
+        return view('admin.training.venue');
+    }
+    public function venueRes(){
+        return view('admin.training.venueRes');
+    }
+    public function venueAlloc(){
+        return view('admin.training.venueAlloc');
+    }
 }

@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true, 'register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+//training center
+Route::get('/training/venue', 'HomeController@venue')->name('venue');
+Route::get('/training/venueRes', 'HomeController@venueRes')->name('venueRes');
+Route::get('/training/venueAlloc', 'HomeController@venueAlloc')->name('venueAlloc');
