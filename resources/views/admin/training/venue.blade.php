@@ -13,10 +13,58 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="" class="btn btn-primary">Add New</a>
-                </div>
+                    <a href="{{URL::to('/training/addvenue')}}" class="btn btn-primary">Add New</a>
+
+                    </div>
+
+    <table id="venue" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Price per session</th>
+            <th>Feature</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+      @foreach($allvenueinfo as $row) 
+        <tr>
+            <td width="5%">{{$row->id}}</td>
+            <td>{{$row->name}}</td>
+            <td>{{$row->location}}</td>
+            <td>{{$row->price}}</td>
+            <td>{{$row->feature}}</td>
+            <td width="15%" align="right">
+              <a href="#" class="btn btn-sm btn-info">Edit</a>
+              <a href="#" class="btn btn-sm btn-danger" id="delete">Delete</a>
+            </td>
+        </tr>
+      @endforeach
+
+    </tbody>
+    </table>
+
+
+                
             </div>
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('datatable')
+    
+<!-- datatable -->
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script> --}}
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#venue').DataTable();
+    } );
+</script>
+
 @endsection

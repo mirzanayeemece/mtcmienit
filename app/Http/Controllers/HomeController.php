@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use DB;
+use Auth;
+use Session;
+Session_start();
 
 class HomeController extends Controller
 {
@@ -27,7 +32,16 @@ class HomeController extends Controller
         return view('admin.home.homeContent');
     }
     public function venue(){
-        return view('admin.training.venue');
+        $allvenueinfo=DB::table('venues')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $manage_venue=view('admin.training.venue')
+                         ->with('allvenueinfo',$allvenueinfo);
+        return view('admin.master')
+                         ->with('admin.training.venue',$manage_venue);
+    }
+    public function addvenue(){
+        return view('admin.training.addvenue');
     }
     public function venueRes(){
         return view('admin.training.venueRes');
