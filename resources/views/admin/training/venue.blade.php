@@ -17,6 +17,17 @@
 
                     </div>
 
+    <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
+        @php
+          $message=Session::get('message');
+            if($message) {
+              echo $message;
+              Session::put('message',null);
+            }
+        @endphp
+            
+      </p>
+
     <table id="venue" class="table table-bordered">
     <thead>
         <tr>
@@ -37,8 +48,8 @@
             <td>{{$row->price}}</td>
             <td>{{$row->feature}}</td>
             <td width="15%" align="right">
-              <a href="#" class="btn btn-sm btn-info">Edit</a>
-              <a href="#" class="btn btn-sm btn-danger" id="delete">Delete</a>
+              <a href="{{URL::to('edit_venue/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+              <a href="{{URL::to('delete_venue/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
             </td>
         </tr>
       @endforeach

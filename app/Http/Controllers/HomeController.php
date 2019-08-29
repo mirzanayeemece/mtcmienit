@@ -40,8 +40,64 @@ class HomeController extends Controller
         return view('admin.master')
                          ->with('admin.training.venue',$manage_venue);
     }
+    //VENUE
     public function addvenue(){
         return view('admin.training.addvenue');
+    }
+    //ADD VENUE IN DATABASE
+    public function savevenue(Request $request)
+    {
+        $this->validate($request, [
+          'name'  => 'required|max:120',
+          'location'  => 'required|max:120',
+          'price'  => 'required|max:30',
+          'feature'  => 'required|max:255'
+        ]);
+        $data = array();
+        $data['name'] = $request->name;
+        $data['location'] = $request->location;
+        $data['price'] = $request->price;
+        $data['feature'] = $request->feature;
+
+        DB::table('venues')->insert($data);
+        Session::put('message','Venue is Added Successfully');
+        return Redirect::to('/training/addvenue');
+    }
+    //DELETE VENUE IN DATABASE
+    public function delete_venue($id)
+    {
+        DB::table('venues')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Venue is deleted Successfully');
+        return Redirect::to('/training/venue');
+    }
+    //EDIT VENUE IN DATABASE
+    public function edit_venue($id)
+    {
+        $venueinfo=DB::table('venues')
+                           ->where('id',$id)
+                           ->first();
+        
+        $manage_venue=view('admin.training.editvenue')
+                         ->with('allvenueinfo',$venueinfo);
+        return view('admin.master')
+                         ->with('admin.training.editvenue',$manage_venue);
+    }
+    //UPDATE VENUE IN DATABASE
+    public function update_venue(Request $request, $id)
+    {
+        $data = array();
+        $data['name'] = $request->name;
+        $data['location'] = $request->location;
+        $data['price'] = $request->price;
+        $data['feature'] = $request->feature;
+
+        DB::table('venues')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','Venue is updated Successfully');
+        return Redirect::to('/training/venue');
     }
     public function venueRes(){
         return view('admin.training.venueRes');
