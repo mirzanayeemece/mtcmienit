@@ -34,7 +34,7 @@
         $(document).on("click", "#delete", function(e){
             e.preventDefault();
             var link = $(this).attr("href");
-            bootbox.confirm("Do you want to delete?", function(confirmed){
+            bootbox.confirm("Do you want to delete it?", function(confirmed){
                 if(confirmed) {
                     window.location.href = link;
                 };
