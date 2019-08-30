@@ -114,6 +114,9 @@ class HomeController extends Controller
         return view('admin.master')
                          ->with('admin.training.venueRes',$manage_venueres);
     }
+    public function addvenueRes(){
+        return view('admin.training.addvenueRes');
+    }
     public function venueAlloc(){
         return view('admin.training.venueAlloc');
     }

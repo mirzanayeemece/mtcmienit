@@ -28,8 +28,10 @@ Route::post('/savevenue','HomeController@savevenue');
 Route::get('/delete_venue/{id}','HomeController@delete_venue');
 Route::get('/edit_venue/{id}','HomeController@edit_venue')->name('edit_venue');
 Route::post('/update_venue/{id}','HomeController@update_venue');
-
+//venue reservation
 Route::get('/training/venueRes', 'HomeController@venueRes')->name('venueRes');
+Route::get('/training/addvenueRes', 'HomeController@addvenueRes')->name('addvenueRes');
+//venue allocation
 Route::get('/training/venueAlloc', 'HomeController@venueAlloc')->name('venueAlloc');
 
 //user

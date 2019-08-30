@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/training/venue')}}" class="btn btn-primary">Back</a>
+                    <a href="{{URL::to('/training/venue')}}" class="btn btn-primary">BACK</a>
                 </div>
    
    @if (count($errors) > 0)
@@ -49,24 +49,33 @@
             
       </p>
 
-      <div class="form-group">
-        <label for="name">Venue Name:</label>
+      <div class="form-group row">
+        <label for="name" class="col-md-4 col-form-label text-md-left">Venue Name:</label>
+        <div class="col-md-6">
         <input type="text" class="form-control" id="name" name="name" required>
       </div>
+      </div>
 
-      <div class="form-group">
-        <label for="location">Location:</label>
+      <div class="form-group row">
+        <label for="location" class="col-md-4 col-form-label text-md-left">Location:</label>
+        <div class="col-md-6">
         <input type="text" class="form-control" id="location" name="location" required>
       </div>
-
-      <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="text" class="form-control" id="price" name="price" required>
       </div>
 
-      <div class="form-group">
-        <label for="feature">Feature:</label>
-        <textarea id="feature" name="feature" cols="80" rows="4" placeholder="" class="form-control" required></textarea>
+      <div class="form-group row">
+        <label for="price" class="col-md-4 col-form-label text-md-left">Price:</label>
+        <div class="col-md-6">
+        <input type="text" class="form-control" id="price" name="price" required>
+      </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="feature" class="col-md-4 col-form-label text-md-left">Feature:</label>
+        <div class="col-md-6">
+        <textarea id="feature" name="feature" cols="80" rows="4" placeholder="" class="form-control" required>
+        </textarea>
+      </div>
       </div>
       
 
