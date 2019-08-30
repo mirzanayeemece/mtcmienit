@@ -15,6 +15,12 @@ class CreateVenuereservationsTable extends Migration
     {
         Schema::create('venuereservations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 60);
+            $table->string('contact_no', 30);
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('venue_name');
+            $table->integer('no_of_attendee');
             $table->timestamps();
         });
     }
