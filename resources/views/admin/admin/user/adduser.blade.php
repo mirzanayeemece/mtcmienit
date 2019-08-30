@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/admin/user')}}" class="btn btn-primary">Back</a>
+                    <a href="{{URL::to('/admin/user/user')}}" class="btn btn-primary">Back</a>
                 </div>
    
    @if (count($errors) > 0)

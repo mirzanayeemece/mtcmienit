@@ -33,8 +33,8 @@ Route::get('/training/venueRes', 'HomeController@venueRes')->name('venueRes');
 Route::get('/training/venueAlloc', 'HomeController@venueAlloc')->name('venueAlloc');
 
 //user
-Route::get('/admin/user', 'HomeController@user')->name('user');
-Route::get('/admin/adduser', 'HomeController@adduser')->name('add_user');
+Route::get('/admin/user/user', 'HomeController@user')->name('user');
+Route::get('/admin/user/adduser', 'HomeController@adduser')->name('add_user');
 Route::post('/saveuser','HomeController@saveuser');
 Route::get('/delete_user/{id}','HomeController@delete_user');
 Route::get('/edit_user/{id}','HomeController@edit_user')->name('edit_user');

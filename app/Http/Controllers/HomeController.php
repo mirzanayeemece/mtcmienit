@@ -118,14 +118,14 @@ class HomeController extends Controller
         $all_users_info=DB::table('users')
                            ->orderBy('id', 'desc')
                            ->get();
-        $manage_users=view('admin.admin.user')
+        $manage_users=view('admin.admin.user.user')
                          ->with('all_users_info',$all_users_info);
         return view('admin.master')
-                         ->with('admin.admin.user',$manage_users);
+                         ->with('admin.admin.user.user',$manage_users);
     }
     //ADD USER
     public function adduser(){
-        return view('admin.admin.adduser');
+        return view('admin.admin.user.adduser');
     }
     //ADD USER TO DATABASE
     public function saveuser(Request $request)
@@ -144,7 +144,7 @@ class HomeController extends Controller
 
         DB::table('users')->insert($data);
         Session::put('message','Venue is Added Successfully');
-        return Redirect::to('/admin/adduser');
+        return Redirect::to('/admin/user/adduser');
     }
     //DELETE USER FROM DATABASE
     public function delete_user($id)
@@ -153,7 +153,7 @@ class HomeController extends Controller
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'User has been deleted Successfully');
-        return Redirect::to('/admin/user');
+        return Redirect::to('/admin/user/user');
     }
     //EDIT USER IN DATABASE
     public function edit_user($id)
@@ -162,10 +162,10 @@ class HomeController extends Controller
                            ->where('id',$id)
                            ->first();
         
-        $manage_user=view('admin.admin.edituser')
+        $manage_user=view('admin.admin.user.edituser')
                          ->with('all_users_info',$user_info);
         return view('admin.master')
-                         ->with('admin.admin.edituser',$manage_user);
+                         ->with('admin.admin.user.edituser',$manage_user);
     }
     //UPDATE USER IN DATABASE
     public function update_user(Request $request, $id)
@@ -178,6 +178,6 @@ class HomeController extends Controller
              ->where('id',$id)
              ->update($data);
         Session::put('message','User has been updated Successfully');
-        return Redirect::to('/admin/user');
+        return Redirect::to('/admin/user/user');
     }
 }
