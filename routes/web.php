@@ -31,6 +31,7 @@ Route::post('/update_venue/{id}','HomeController@update_venue');
 //venue reservation
 Route::get('/training/venueRes', 'HomeController@venueRes')->name('venueRes');
 Route::get('/training/addvenueRes', 'HomeController@addvenueRes')->name('addvenueRes');
+Route::post('/savevenueRes','HomeController@savevenueRes');
 //venue allocation
 Route::get('/training/venueAlloc', 'HomeController@venueAlloc')->name('venueAlloc');
 
