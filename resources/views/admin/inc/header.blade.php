@@ -19,7 +19,7 @@
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{URL::to('/admin/user/user')}}">User</a>
-                            <a class="dropdown-item" href="{{URL::to('/admin/userrole/userrole')}}">User Role</a>
+                            <a class="dropdown-item" href="{{URL::to('/admin/user_role/userrole')}}">User Role</a>
                             <a class="dropdown-item" href="{{URL::to('/admin/rolewisepermission/rolewisepermission')}}">Role Wise Permission</a>
                             <a class="dropdown-item" href="{{URL::to('/admin/changepassword/changepassword')}}">Change Password</a>
                           </div>

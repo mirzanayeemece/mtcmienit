@@ -43,4 +43,4 @@ Route::get('/edit_user/{id}','HomeController@edit_user')->name('Edit User');
 Route::post('/update_user/{id}','HomeController@update_user');
 
 //userrole
-Route::get('/admin/user_role/userrole', 'HomeController@user')->name('User Role');
+Route::get('/admin/user_role/userrole', 'AdminController@userrole')->name('User Role');

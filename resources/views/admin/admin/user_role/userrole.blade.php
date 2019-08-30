@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/admin/userrole/adduserrole')}}" class="btn btn-primary">Add New User Role</a>
+                    <a href="{{URL::to('/admin/user_role/adduserrole')}}" class="btn btn-primary">Add New User Role</a>
 
                     </div>
 
