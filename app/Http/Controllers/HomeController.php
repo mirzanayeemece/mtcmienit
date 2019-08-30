@@ -104,7 +104,17 @@ class HomeController extends Controller
         return Redirect::to('/training/venue');
     }
     public function venueRes(){
-        return view('admin.training.venueRes');
+        $allvenueresinfo=DB::table('venuereservations')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $allvenueinfo=DB::table('venues')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $manage_venueres=view('admin.training.venueRes')
+                         ->with('allvenueresinfo',$allvenueresinfo)
+                         ->with('allvenueinfo',$allvenueinfo);
+        return view('admin.master')
+                         ->with('admin.training.venueRes',$manage_venueres);
     }
     public function venueAlloc(){
         return view('admin.training.venueAlloc');
