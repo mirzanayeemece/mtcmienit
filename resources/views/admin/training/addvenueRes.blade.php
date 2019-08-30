@@ -35,7 +35,7 @@
 
   <!--form-->
  
-  <form class="" action="{{ url('/savevenue') }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
+  <form class="" action="{{ url('/savevenueRes') }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
     {{ csrf_field() }}    
 
     <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
@@ -66,21 +66,26 @@
       <div class="form-group row">
         <label for="start_date" class="col-md-4 col-form-label text-md-left">Date/Start Date:</label>
         <div class="col-md-6">
-        <input type="text" class="form-control" id="start_date" name="start_date" required>
+        <input type="text" class="form-control datepicker" id="start_date" name="start_date" autocomplete="off" required>
       </div>
       </div>
 
       <div class="form-group row">
         <label for="end_date" class="col-md-4 col-form-label text-md-left">End Date:</label>
         <div class="col-md-6">
-        <input type="text" class="form-control" id="end_date" name="end_date" required>
+        <input type="text" class="form-control datepicker" id="end_date" name="end_date" autocomplete="off">
       </div>
       </div>
 
       <div class="form-group row">
         <label for="venue_id" class="col-md-4 col-form-label text-md-left">Venue:</label>
         <div class="col-md-6">
-        <input type="text" class="form-control" id="venue_id" name="venue_id" required>
+        <select id="venue_id" name="venue_id" class="form-control" required>
+          <option value>--Choose One--</option>
+          @foreach($allvenueinfo as $row)
+            <option value="{{ $row->id }}">{{ $row->name }}</option>
+          @endforeach
+        </select>
       </div>
       </div>
 
@@ -94,7 +99,11 @@
       <div class="form-group row">
         <label for="status" class="col-md-4 col-form-label text-md-left">Status:</label>
         <div class="col-md-6">
-        <input type="text" class="form-control" id="status" name="status" required>
+        <select id="status" name="status" class="form-control" required>
+          <option value>--Choose One--</option>
+            <option value="1">Approved</option>
+            <option value="2">Cancelled</option>
+        </select>
       </div>
       </div>
       

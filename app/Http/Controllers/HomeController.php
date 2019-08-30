@@ -103,6 +103,7 @@ class HomeController extends Controller
         Session::put('message','Venue is updated Successfully');
         return Redirect::to('/training/venue');
     }
+    //VENUE RESERVATION
     public function venueRes(){
         $allvenueresinfo=DB::table('venuereservations')
                          ->join('venues', 'venuereservations.venue_id', '=', 'venues.id')
@@ -114,8 +115,40 @@ class HomeController extends Controller
         return view('admin.master')
                          ->with('admin.training.venueRes',$manage_venueres);
     }
+    //ADD VENUE RESERVATION 
     public function addvenueRes(){
-        return view('admin.training.addvenueRes');
+        $allvenueinfo=DB::table('venues')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $manage_venue=view('admin.training.addvenueRes')
+                         ->with('allvenueinfo',$allvenueinfo);
+        return view('admin.master')
+                         ->with('admin.training.addvenueRes',$manage_venue);
+    }
+    //ADD VENUE RESERVATION IN DATABASE
+    public function savevenueRes(Request $request)
+    {
+        $this->validate($request, [
+          'name'  => 'required|max:60',
+          'contact_no'  => 'required|max:30',
+          'start_date'  => 'required|date',
+          'end_date'  => 'nullable|date',
+          'venue_id'  => 'required|max:10',
+          'no_of_attendee'  => 'required|max:10',
+          'status'  => 'required|max:5'
+        ]);
+        $data = array();
+        $data['name'] = $request->name;
+        $data['contact_no'] = $request->contact_no;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['venue_id'] = $request->venue_id;
+        $data['no_of_attendee'] = $request->no_of_attendee;
+        $data['status'] = $request->status;
+
+        DB::table('venuereservations')->insert($data);
+        Session::put('message','Venue is reserved Successfully');
+        return Redirect::to('/training/addvenueRes');
     }
     public function venueAlloc(){
         return view('admin.training.venueAlloc');

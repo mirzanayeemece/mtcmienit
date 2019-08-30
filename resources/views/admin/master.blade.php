@@ -41,6 +41,16 @@
             });
         });
     </script>
+    <!-- datepicker -->   
+    <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+    <script type="text/javascript">
+      $(function()
+        {
+          $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+          });
+        });
+    </script>
 
 </body>
 </html>

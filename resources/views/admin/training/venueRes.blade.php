@@ -30,15 +30,15 @@
     <table id="venueres" class="table table-bordered">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Name of Person/Organizaion</th>
-            <th>Contact Number</th>
-            <th>Date/Start Date</th>
-            <th>End Date</th>
-            <th>Venue</th>
-            <th>No of Attendee</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th class="w-3">#</th>
+            <th class="w-15">Name of Person / Organizaion</th>
+            <th class="w-10">Contact Number</th>
+            <th class="w-25">Date/Start Date</th>
+            <th class="w-25">End Date</th>
+            <th class="w-8">Venue</th>
+            <th class="w-4">No of Attendee</th>
+            <th class="w-4">Status</th>
+            <th class="w-6">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -59,7 +59,7 @@
                 @if($row->status == '1')
                   {{'Approved'}}
                 @elseif($row->status == '2')
-                  {{'Canceled'}}
+                  {{'Cancelled'}}
                 @endif
             </td>
             <td width="15%" align="right">
