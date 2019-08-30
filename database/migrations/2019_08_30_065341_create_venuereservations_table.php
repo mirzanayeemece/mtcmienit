@@ -19,8 +19,9 @@ class CreateVenuereservationsTable extends Migration
             $table->string('contact_no', 30);
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('venue_name');
+            $table->integer('venue_id');
             $table->integer('no_of_attendee');
+            $table->smallInteger('status');
             $table->timestamps();
         });
     }

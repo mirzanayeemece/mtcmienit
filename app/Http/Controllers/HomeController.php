@@ -105,14 +105,12 @@ class HomeController extends Controller
     }
     public function venueRes(){
         $allvenueresinfo=DB::table('venuereservations')
-                           ->orderBy('id', 'desc')
-                           ->get();
-        $allvenueinfo=DB::table('venues')
-                           ->orderBy('id', 'desc')
-                           ->get();
+                         ->join('venues', 'venuereservations.venue_id', '=', 'venues.id')
+                         ->select('venuereservations.*', 'venues.name as venueName')
+                         ->orderBy('venuereservations.id', 'desc')
+                         ->get();
         $manage_venueres=view('admin.training.venueRes')
-                         ->with('allvenueresinfo',$allvenueresinfo)
-                         ->with('allvenueinfo',$allvenueinfo);
+                         ->with('allvenueresinfo',$allvenueresinfo);
         return view('admin.master')
                          ->with('admin.training.venueRes',$manage_venueres);
     }
