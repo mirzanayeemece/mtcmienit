@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
 use Session;
@@ -31,6 +32,9 @@ class HomeController extends Controller
         //return view('home');
         return view('admin.home.homeContent');
     }
+
+    // --- METHODS FOR VENUE --- //
+    //VENUE
     public function venue(){
         $allvenueinfo=DB::table('venues')
                            ->orderBy('id', 'desc')
@@ -40,7 +44,7 @@ class HomeController extends Controller
         return view('admin.master')
                          ->with('admin.training.venue',$manage_venue);
     }
-    //VENUE
+    //ADD VENUE
     public function addvenue(){
         return view('admin.training.addvenue');
     }
@@ -104,5 +108,76 @@ class HomeController extends Controller
     }
     public function venueAlloc(){
         return view('admin.training.venueAlloc');
+    }
+
+    
+
+    // --- METHODS FOR USER --- //
+    //USER
+    public function user(){
+        $all_users_info=DB::table('users')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $manage_users=view('admin.admin.user')
+                         ->with('all_users_info',$all_users_info);
+        return view('admin.master')
+                         ->with('admin.admin.user',$manage_users);
+    }
+    //ADD USER
+    public function adduser(){
+        return view('admin.admin.adduser');
+    }
+    //ADD USER TO DATABASE
+    public function saveuser(Request $request)
+    {
+        $this->validate($request, [
+          'name'  => 'required', 'string', 'max:255',
+          'email'  => 'required', 'string', 'email', 'max:255', 'unique:users',
+          'password'  => 'required', 'string', 'min:6', 'confirmed',
+        ]);
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request->password);
+        $data['created_at'] = now();
+        
+
+        DB::table('users')->insert($data);
+        Session::put('message','Venue is Added Successfully');
+        return Redirect::to('/admin/adduser');
+    }
+    //DELETE USER FROM DATABASE
+    public function delete_user($id)
+    {
+        DB::table('users')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'User has been deleted Successfully');
+        return Redirect::to('/admin/user');
+    }
+    //EDIT USER IN DATABASE
+    public function edit_user($id)
+    {
+        $user_info=DB::table('users')
+                           ->where('id',$id)
+                           ->first();
+        
+        $manage_user=view('admin.admin.edituser')
+                         ->with('all_users_info',$user_info);
+        return view('admin.master')
+                         ->with('admin.admin.edituser',$manage_user);
+    }
+    //UPDATE USER IN DATABASE
+    public function update_user(Request $request, $id)
+    {
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+
+        DB::table('users')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','User has been updated Successfully');
+        return Redirect::to('/admin/user');
     }
 }
