@@ -13,21 +13,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="">User</a>
-                            <a class="dropdown-item" href="">User Role</a>
-                            <a class="dropdown-item" href="">Role Wise Permission</a>
-                            <a class="dropdown-item" href="">Change Password</a>
+                            <a class="dropdown-item" href="{{URL::to('/admin/user')}}">User</a>
+                            <a class="dropdown-item" href="{{URL::to('/admin/userrole')}}">User Role</a>
+                            <a class="dropdown-item" href="{{URL::to('/admin/rolewisepermission')}}">Role Wise Permission</a>
+                            <a class="dropdown-item" href="{{URL::to('/admin/changepassword')}}">Change Password</a>
                           </div>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Configuration
                           </a>
@@ -39,7 +39,7 @@
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Hotel Management
                           </a>
@@ -54,7 +54,7 @@
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             HR & Payroll
                           </a>
@@ -72,7 +72,7 @@
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Restaurant
                           </a>
@@ -88,7 +88,7 @@
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Training Centre
                           </a>
@@ -101,7 +101,7 @@
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Inventory
                           </a>
@@ -117,7 +117,7 @@
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Accounting
                           </a>
@@ -132,7 +132,7 @@
                     </ul>
 
                     <ul class="navbar-nav mr-auto">
-                    	<li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Reports
                           </a>
