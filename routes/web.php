@@ -33,9 +33,12 @@ Route::get('/training/venueRes', 'HomeController@venueRes')->name('venueRes');
 Route::get('/training/venueAlloc', 'HomeController@venueAlloc')->name('venueAlloc');
 
 //user
-Route::get('/admin/user/user', 'HomeController@user')->name('user');
-Route::get('/admin/user/adduser', 'HomeController@adduser')->name('add_user');
+Route::get('/admin/user/user', 'HomeController@user')->name('User');
+Route::get('/admin/user/adduser', 'HomeController@adduser')->name('Add User');
 Route::post('/saveuser','HomeController@saveuser');
 Route::get('/delete_user/{id}','HomeController@delete_user');
-Route::get('/edit_user/{id}','HomeController@edit_user')->name('edit_user');
+Route::get('/edit_user/{id}','HomeController@edit_user')->name('Edit User');
 Route::post('/update_user/{id}','HomeController@update_user');
+
+//userrole
+Route::get('/admin/user_role/userrole', 'HomeController@user')->name('User Role');
