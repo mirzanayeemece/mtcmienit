@@ -45,3 +45,8 @@ Route::post('/update_user/{id}','HomeController@update_user');
 
 //userrole
 Route::get('/admin/user_role/userrole', 'AdminController@userrole')->name('User Role');
+Route::get('/admin/user_role/adduserrole', 'AdminController@addrole')->name('Add User Role');
+Route::post('/saverole','AdminController@saverole');
+Route::get('/delete_user_role/{id}','AdminController@delete_user_role');
+Route::get('/edit_user_role/{id}','AdminController@edit_user_role')->name('Edit User Role');
+Route::post('/update_user_role/{id}','AdminController@update_user_role');

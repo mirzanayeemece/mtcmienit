@@ -28,7 +28,7 @@
             
       </p>
 
-    <table id="user" class="table table-bordered">
+    <table id="userrole" class="table table-bordered">
     <thead>
         <tr>
             <th>#</th>
@@ -43,7 +43,6 @@
             <td width="5%">{{$row->id}}</td>
             <td>{{$row->name}}</td>
             <td>{{$row->description}}</td>
-            <td></td>
             <td width="15%" align="right">
               <a href="{{URL::to('edit_user_role/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
               <a href="{{URL::to('delete_user_role/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
