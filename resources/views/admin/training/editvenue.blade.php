@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">ADD VENUE</div>
+                <div class="card-header">EDIT VENUE</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -49,24 +49,32 @@
             
       </p>
 
-      <div class="form-group">
-        <label for="name">Venue Name:</label>
+      <div class="form-group row">
+        <label for="name" class="col-md-4 col-form-label text-md-left">Venue Name:</label>
+        <div class="col-md-6">
         <input type="text" class="form-control" value="{{$allvenueinfo->name}}" id="name" name="name" required>
       </div>
+      </div>
 
-      <div class="form-group">
-        <label for="location">Location:</label>
+      <div class="form-group row">
+        <label for="location" class="col-md-4 col-form-label text-md-left">Location:</label>
+        <div class="col-md-6">
         <input type="text" class="form-control" value="{{$allvenueinfo->location}}" id="location" name="location" required>
       </div>
-
-      <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="text" class="form-control" value="{{$allvenueinfo->price}}" id="price" name="price" required>
       </div>
 
-      <div class="form-group">
-        <label for="feature">Feature:</label>
+      <div class="form-group row">
+        <label for="price" class="col-md-4 col-form-label text-md-left">Price:</label>
+        <div class="col-md-6">
+        <input type="text" class="form-control" value="{{$allvenueinfo->price}}" id="price" name="price" required>
+      </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="feature" class="col-md-4 col-form-label text-md-left">Feature:</label>
+        <div class="col-md-6">
         <textarea id="feature" name="feature" cols="80" rows="4" placeholder="" class="form-control" required>{{$allvenueinfo->feature}}</textarea>
+      </div>
       </div>
       
 

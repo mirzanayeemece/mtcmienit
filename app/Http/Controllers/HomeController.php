@@ -151,6 +151,49 @@ class HomeController extends Controller
         Session::put('message','Venue is reserved Successfully');
         return Redirect::to('/training/addvenueRes');
     }
+    //DELETE VENUE RESERVATION IN DATABASE
+    public function delete_venueres($id)
+    {
+        DB::table('venuereservations')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Venue Reservation is deleted Successfully');
+        return Redirect::to('/training/venueRes');
+    }
+    //EDIT VENUE RESERVATION IN DATABASE
+    public function edit_venueres($id)
+    {
+        $allvenueinfo=DB::table('venues')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $venueresinfo=DB::table('venuereservations')
+                           ->where('id',$id)
+                           ->first();
+        
+        $manage_venueres=view('admin.training.editvenueRes')
+                         ->with('allvenueresinfo',$venueresinfo)
+                         ->with('allvenueinfo',$allvenueinfo);
+        return view('admin.master')
+                         ->with('admin.training.editvenueRes',$manage_venueres);
+    }
+    //UPDATE VENUE RESERVATION IN DATABASE
+    public function update_venueres(Request $request, $id)
+    {
+        $data = array();
+        $data['name'] = $request->name;
+        $data['contact_no'] = $request->contact_no;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['venue_id'] = $request->venue_id;
+        $data['no_of_attendee'] = $request->no_of_attendee;
+        $data['status'] = $request->status;
+
+        DB::table('venuereservations')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','Venue Reservation is updated Successfully');
+        return Redirect::to('/training/venueRes');
+    }
     public function venueAlloc(){
         return view('admin.training.venueAlloc');
     }
