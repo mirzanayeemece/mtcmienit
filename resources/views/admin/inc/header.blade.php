@@ -95,7 +95,7 @@
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{URL::to('/training/venue')}}">Venue</a>
                             <a class="dropdown-item" href="{{URL::to('/training/venueRes')}}">Venue Reservation</a>
-                            <a class="dropdown-item" href="{{URL::to('/training/venueAlloc')}}">Venue Allocation</a>
+                            {{-- <a class="dropdown-item" href="{{URL::to('/training/venueAlloc')}}">Venue Allocation</a> --}}
                           </div>
                         </li>
                     </ul>

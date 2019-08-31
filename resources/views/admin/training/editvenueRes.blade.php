@@ -109,12 +109,17 @@
             @if($allvenueresinfo->status == '1')
                {{'Selected'}}
              @endif
-             >Approved</option>
+             >{{Config::get('constants.venueResStatus.1')}}</option>
             <option value="2"
             @if($allvenueresinfo->status == '2')
                {{'Selected'}}
              @endif
-             >Cancelled</option>
+             >{{Config::get('constants.venueResStatus.2')}}</option>
+             <option value="3"
+             @if($allvenueresinfo->status == '3')
+               {{'Selected'}}
+             @endif
+             >{{Config::get('constants.venueResStatus.3')}}</option>
         </select>
       </div>
       </div>      

@@ -59,9 +59,11 @@
             <td>{{$row->no_of_attendee}}</td>
             <td>
                 @if($row->status == '1')
-                  {{'Approved'}}
+                  {{Config::get('constants.venueResStatus.1')}}
                 @elseif($row->status == '2')
-                  {{'Cancelled'}}
+                  {{Config::get('constants.venueResStatus.2')}}
+                @elseif($row->status == '3')
+                  {{Config::get('constants.venueResStatus.3')}}
                 @endif
             </td>
             <td width="15%" align="right">

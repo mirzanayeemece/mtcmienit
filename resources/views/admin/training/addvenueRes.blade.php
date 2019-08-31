@@ -101,8 +101,9 @@
         <div class="col-md-6">
         <select id="status" name="status" class="form-control" required>
           <option value>--Choose One--</option>
-            <option value="1">Approved</option>
-            <option value="2">Cancelled</option>
+            <option value="1">{{Config::get('constants.venueResStatus.1')}}</option>
+            <option value="2">{{Config::get('constants.venueResStatus.2')}}</option>
+            {{-- <option value="3">{{Config::get('constants.venueResStatus.3')}}</option> --}}
         </select>
       </div>
       </div>
