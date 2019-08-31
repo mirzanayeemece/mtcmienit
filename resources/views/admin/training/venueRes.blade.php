@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Venue Reservation List</div>
 
@@ -30,15 +30,15 @@
     <table id="venueres" class="table table-bordered">
     <thead>
         <tr>
-            <th class="w-3">#</th>
-            <th class="w-15">Name of Person / Organizaion</th>
-            <th class="w-10">Contact Number</th>
-            <th class="w-25">Date/Start Date</th>
+            <th class="">#</th>
+            <th class="">Name of Person / Organizaion</th>
+            <th class="">Contact Number</th>
+            <th class="w-25">Date / Start Date</th>
             <th class="w-25">End Date</th>
-            <th class="w-8">Venue</th>
-            <th class="w-4">No of Attendee</th>
-            <th class="w-4">Status</th>
-            <th class="w-6">Action</th>
+            <th class="">Venue</th>
+            <th class="">No of Attendee</th>
+            <th class="">Status</th>
+            <th class="">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -51,6 +51,8 @@
             <td>
                 @if($row->end_date != NULL)
                   {{date("d-m-Y", strtotime($row->end_date))}}
+                @else
+                  {{'Reserved for One Day'}}
                 @endif
             </td>
             <td>{{$row->venueName}}</td>
