@@ -74,7 +74,11 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#venue').DataTable();
+        $('#venue').DataTable({
+            "paging": true,
+            "ordering":  true,
+            "pagingType": "full_numbers"
+          });
     } );
 </script>
 
