@@ -108,7 +108,7 @@ class HomeController extends Controller
     public function venueRes(){
         $allvenueresinfo=DB::table('venuereservations')
                          ->join('venues', 'venuereservations.venue_id', '=', 'venues.id')
-                         ->select('venuereservations.*', 'venues.name as venueName')
+                         ->select('venuereservations.*', 'venues.name as venueName', 'venues.price as vprice')
                          ->orderBy('venuereservations.id', 'desc')
                          ->get();
         $manage_venueres=view('admin.training.venueRes')
@@ -135,6 +135,7 @@ class HomeController extends Controller
           'start_date'  => 'required|date',
           'end_date'  => 'nullable|date',
           'venue_id'  => 'required|max:10',
+          'price'  => 'required|max:30',
           'no_of_attendee'  => 'required|max:10',
           'status'  => 'required|max:5'
         ]);
@@ -144,6 +145,7 @@ class HomeController extends Controller
         $data['start_date'] = $request->start_date;
         $data['end_date'] = $request->end_date;
         $data['venue_id'] = $request->venue_id;
+        $data['price'] = $request->price;
         $data['no_of_attendee'] = $request->no_of_attendee;
         $data['status'] = $request->status;
 
@@ -185,6 +187,7 @@ class HomeController extends Controller
         $data['start_date'] = $request->start_date;
         $data['end_date'] = $request->end_date;
         $data['venue_id'] = $request->venue_id;
+        $data['price'] = $request->price;
         $data['no_of_attendee'] = $request->no_of_attendee;
         $data['status'] = $request->status;
 

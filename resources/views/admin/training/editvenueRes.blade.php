@@ -94,6 +94,20 @@
       </div>
 
       <div class="form-group row">
+        <label for="actual_price" class="col-md-4 col-form-label text-md-left">Actual Price:</label>
+        <div class="col-md-6">
+        <input type="text" class="form-control" readonly>
+      </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="price" class="col-md-4 col-form-label text-md-left">Client Price:</label>
+        <div class="col-md-6">
+        <input type="text" class="form-control" value="{{$allvenueresinfo->price}}" id="price" name="price" required>
+      </div>
+      </div>
+
+      <div class="form-group row">
         <label for="no_of_attendee" class="col-md-4 col-form-label text-md-left">No. of Attendee:</label>
         <div class="col-md-6">
         <input type="text" class="form-control" value="{{$allvenueresinfo->no_of_attendee}}" id="no_of_attendee" name="no_of_attendee" required>

@@ -36,7 +36,9 @@
             <th class="w-25">Date / Start Date</th>
             <th class="w-25">End Date</th>
             <th class="">Venue</th>
-            <th class="">No of Attendee</th>
+            <th class="">Actual Price</th>
+            <th class="">Client Price</th>
+            <th class="">No of Attendee</th>            
             <th class="">Status</th>
             <th class="">Action</th>
         </tr>
@@ -56,7 +58,9 @@
                 @endif
             </td>
             <td>{{$row->venueName}}</td>
-            <td>{{$row->no_of_attendee}}</td>
+            <td>{{$row->vprice}}</td>
+            <td>{{$row->price}}</td>
+            <td>{{$row->no_of_attendee}}</td>            
             <td>
                 @if($row->status == '1')
                   {{Config::get('constants.venueResStatus.1')}}
