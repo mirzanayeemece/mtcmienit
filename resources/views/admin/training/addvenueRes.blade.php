@@ -50,7 +50,7 @@
       </p>
 
       <div class="form-group row">
-        <label for="name" class="col-md-4 col-form-label text-md-left">Persion/Organization Name:</label>
+        <label for="name" class="col-md-4 col-form-label text-md-left">Person/Organization Name:</label>
         <div class="col-md-6">
         <input type="text" class="form-control" id="name" name="name" required>
       </div>

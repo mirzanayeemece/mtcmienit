@@ -22,8 +22,79 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+    // ----- METHODS FOR USER ----- //
+    //USER
+    public function user(){
+        $all_users_info=DB::table('users')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $manage_users=view('admin.admin.user.user')
+                         ->with('all_users_info',$all_users_info);
+        return view('admin.master')
+                         ->with('admin.admin.user.user',$manage_users);
+    }
+    //ADD USER
+    public function adduser(){
+        return view('admin.admin.user.adduser');
+    }
+    //ADD USER TO DATABASE
+    public function saveuser(Request $request)
+    {
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:255'],
+          'email'  => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'password'  => ['required', 'string', 'min:6', 'confirmed']
+        ]);
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request->password);
+        $data['created_at'] = now();
+        
+
+        DB::table('users')->insert($data);
+        Session::put('message','Venue is Added Successfully');
+        return Redirect::to('/admin/user/adduser');
+    }
+    //DELETE USER FROM DATABASE
+    public function delete_user($id)
+    {
+        DB::table('users')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'User has been deleted Successfully');
+        return Redirect::to('/admin/user/user');
+    }
+    //EDIT USER IN DATABASE
+    public function edit_user($id)
+    {
+        $user_info=DB::table('users')
+                           ->where('id',$id)
+                           ->first();
+        
+        $manage_user=view('admin.admin.user.edituser')
+                         ->with('all_users_info',$user_info);
+        return view('admin.master')
+                         ->with('admin.admin.user.edituser',$manage_user);
+    }
+    //UPDATE USER IN DATABASE
+    public function update_user(Request $request, $id)
+    {
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+
+        DB::table('users')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','User has been updated Successfully');
+        return Redirect::to('/admin/user/user');
+    }
+
     
-    // --- METHODS FOR USERROLE --- //
+    // ----- METHODS FOR USERROLE ----- //
     //USERROLE
     public function userrole(){
         $all_userrole_info=DB::table('roles')
@@ -87,5 +158,17 @@ class AdminController extends Controller
                 ->delete();
         Session::put('message', 'User Role has been deleted Successfully');
         return Redirect::to('/admin/user_role/userrole');
+    }
+
+    // -----METHODS FOR ROLEWISEPERMISSION
+
+    //ROLE-WISE-PERMISSION
+    public function role_wise_permission(){
+        return view('admin.admin.role_wise_permission/rolewisepermission');
+    }
+
+    //CHANGE-PASSWORD
+    public function change_password(){
+        return view('admin.admin.change_password/changepassword');
     }
 }

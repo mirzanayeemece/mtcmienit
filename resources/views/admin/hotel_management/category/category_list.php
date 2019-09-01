@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Roles Permission Block</div>
+                <div class="card-header">Category List</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="" class="btn btn-primary">Add New Permission</a>
+                    <a href="" class="btn btn-primary">Add New</a>
                 </div>
             </div>
         </div>

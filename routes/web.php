@@ -39,17 +39,23 @@ Route::post('/update_venueres/{id}','HomeController@update_venueres');
 Route::get('/training/venueAlloc', 'HomeController@venueAlloc')->name('venueAlloc');
 
 //user
-Route::get('/admin/user/user', 'HomeController@user')->name('User');
-Route::get('/admin/user/adduser', 'HomeController@adduser')->name('Add User');
-Route::post('/saveuser','HomeController@saveuser');
-Route::get('/delete_user/{id}','HomeController@delete_user');
-Route::get('/edit_user/{id}','HomeController@edit_user')->name('Edit User');
-Route::post('/update_user/{id}','HomeController@update_user');
+Route::get('/admin/user/user', 'AdminController@user')->name('User');
+Route::get('/admin/user/adduser', 'AdminController@adduser')->name('Add User');
+Route::post('/saveuser','AdminController@saveuser');
+Route::get('/delete_user/{id}','AdminController@delete_user');
+Route::get('/edit_user/{id}','AdminController@edit_user')->name('Edit User');
+Route::post('/update_user/{id}','AdminController@update_user');
 
-//userrole
+//user-role
 Route::get('/admin/user_role/userrole', 'AdminController@userrole')->name('User Role');
 Route::get('/admin/user_role/adduserrole', 'AdminController@addrole')->name('Add User Role');
 Route::post('/saverole','AdminController@saverole');
 Route::get('/delete_user_role/{id}','AdminController@delete_user_role');
 Route::get('/edit_user_role/{id}','AdminController@edit_user_role')->name('Edit User Role');
 Route::post('/update_user_role/{id}','AdminController@update_user_role');
+
+//role-wise-permission
+Route::get('/admin/role_wise_permission/rolewisepermission', 'AdminController@role_wise_permission')->name('Role Wise Permission');
+
+//change-password
+Route::get('/admin/change_password/changepassword', 'AdminController@change_password')->name('Change Password');
