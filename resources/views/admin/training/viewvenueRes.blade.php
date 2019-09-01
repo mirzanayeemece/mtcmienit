@@ -17,7 +17,8 @@
                 </div>
  
     <div style="padding: 0 30px 0 30px;">
-      <a href="{{URL::to('/training/venueRes')}}" class="btn btn-primary">BACK</a><br><br>
+      <a href="{{URL::to('/training/venueRes')}}" class="btn btn-primary mb-2">BACK</a>
+      <a href="{{ url('pdf/'.$allvenueresinfo->id) }}" class="btn btn-success mb-2">Export PDF</a>
 
     <table id="viewvenueres" class="table table-bordered">
     <tbody>
@@ -82,22 +83,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('datatable')
-    
-<!-- datatable -->
-{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script> --}}
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('#viewvenueres').DataTable({
-            // "paging": true,
-            // "ordering":  true,
-            // "pagingType": "full_numbers"
-          });
-    } );
-</script>
-
 @endsection

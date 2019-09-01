@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
+use PDF;
 use Session;
 Session_start();
 
@@ -214,6 +215,22 @@ class HomeController extends Controller
                          ->with('allvenueresinfo',$allvenueresinfo);
         return view('admin.master')
                          ->with('admin.training.viewvenueRes',$manage_venueres);
+    }
+    public function pdf($id){
+      
+     $data['title'] = 'Notes List';
+     //$data['notes'] =  Note::get();
+     $data['notes'] =  DB::table('venuereservations')
+                         ->join('venues', 'venuereservations.venue_id', '=', 'venues.id')
+                         ->select('venuereservations.*', 'venues.name as venueName', 'venues.price as vprice')
+                         ->where('venuereservations.id',$id)
+                        ->get();
+ 
+     //$pdf = PDF::loadView('notes.list_notes', $data);
+     $pdf = PDF::loadView('admin.training.venueReservPdf', $data);
+     //$pdf = view('admin.training.venueReservPdf', $data);
+   
+     return $pdf->download('venue_reservation_details.pdf');
     }
     public function venueAlloc(){
         return view('admin.training.venueAlloc');

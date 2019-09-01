@@ -36,6 +36,7 @@ Route::get('/delete_venueres/{id}','HomeController@delete_venueres');
 Route::get('/edit_venueres/{id}','HomeController@edit_venueres')->name('edit_venueres');
 Route::post('/update_venueres/{id}','HomeController@update_venueres');
 Route::get('/view_venueres/{id}','HomeController@view_venueres')->name('view_venueres');
+ Route::get('pdf/{id}', 'HomeController@pdf');
 //venue allocation
 Route::get('/training/venueAlloc', 'HomeController@venueAlloc')->name('venueAlloc');
 
