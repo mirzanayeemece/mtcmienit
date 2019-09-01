@@ -59,3 +59,11 @@ Route::get('/admin/role_wise_permission/rolewisepermission', 'AdminController@ro
 
 //change-password
 Route::get('/admin/change_password/changepassword', 'AdminController@change_password')->name('Change Password');
+
+//hotel-management
+Route::get('/hotel_management/building/building_list', 'HotelController@building')->name('Building');
+Route::get('/hotel_management/building/addbuilding', 'HotelController@add_building')->name('Add Building');
+Route::get('/hotel_management/building/building_type_list', 'HotelController@building_type')->name('Building Type');
+Route::get('/hotel_management/building/addbuildingtype', 'HotelController@add_building_type')->name('Building Type');
+Route::post('/savebuilding','HotelController@save_building');
+Route::post('/savebuildingtype','HotelController@save_building_type');

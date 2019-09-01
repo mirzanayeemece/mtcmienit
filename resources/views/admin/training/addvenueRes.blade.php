@@ -36,7 +36,7 @@
   <!--form-->
  
   <form class="" action="{{ url('/savevenueRes') }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
-    {{ csrf_field() }}    
+    @csrf
 
     <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
         @php
@@ -80,13 +80,13 @@
       <div class="form-group row">
         <label for="venue_id" class="col-md-4 col-form-label text-md-left">Venue:</label>
         <div class="col-md-6">
-        <select id="venue_id" name="venue_id" class="form-control" required>
-          <option value>--Choose One--</option>
-          @foreach($allvenueinfo as $row)
-            <option value="{{ $row->id }}">{{ $row->name }}</option>
-          @endforeach
-        </select>
-      </div>
+          <select id="venue_id" name="venue_id" class="form-control" required>
+            <option value>--Choose One--</option>
+            @foreach($allvenueinfo as $row)
+              <option value="{{ $row->id }}">{{ $row->name }}</option>
+            @endforeach
+          </select>
+        </div>
       </div>
 
       <div class="form-group row">

@@ -44,11 +44,15 @@
                             Hotel Management
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="">Category</a>
                             <a class="dropdown-item" href="">Room</a>
                             <a class="dropdown-item" href="">Reservation</a>
                             <a class="dropdown-item" href="">Booking</a>
                             <a class="dropdown-item" href="">Billing</a>
+                            <a class="dropdown-item" href="">Category</a>
+                            <a class="dropdown-item" href="">Floor</a>
+                            <a class="dropdown-item" href="{{URL::to('/hotel_management/building/building_list')}}">Building</a>
+                            <a class="dropdown-item" href="{{URL::to('/hotel_management/building/building_type_list')}}">Building Types</a>
+                            
                           </div>
                         </li>
                     </ul>

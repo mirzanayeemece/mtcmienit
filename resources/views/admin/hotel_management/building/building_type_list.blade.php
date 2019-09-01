@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">VENUE LIST</div>
+                <div class="card-header"><big> <strong>BUILDING TYPES LIST</strong> </big></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/training/addvenue')}}" class="btn btn-primary">Add New</a>
-
+                    <a href="{{URL::to('/hotel_management/building/addbuildingtype')}}" class="btn btn-primary">Add New Building Type</a>
                 </div>
 
                 <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
@@ -25,41 +24,36 @@
                           Session::put('message',null);
                         }
                     @endphp
-                        
                 </p>
 
-                <table id="venue" class="table table-bordered">
+                <table id="building_type" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Location</th>
-                        <th>Price per session</th>
-                        <th>Feature</th>
+                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach($allvenueinfo as $row) 
+                  @foreach($building_type_list_info as $row) 
                     <tr>
                         <td width="5%">{{$row->id}}</td>
                         <td>{{$row->name}}</td>
-                        <td>{{$row->location}}</td>
-                        <td>{{$row->price}}</td>
-                        <td>{{$row->feature}}</td>
+                        <td>{{$row->description}}</td>
                         <td width="15%" align="right">
-                          <a href="{{URL::to('edit_venue/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-                          <a href="{{URL::to('delete_venue/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                          <!-- <a href="{{URL::to('edit_building/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+                          <a href="{{URL::to('delete_building/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a> -->
                         </td>
                     </tr>
                   @endforeach
                 </tbody>
                 </table>
+
             </div>
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('datatable')
@@ -70,7 +64,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#venue').DataTable({
+        $('#building_type').DataTable({
             "paging": true,
             "ordering":  true,
             "pagingType": "full_numbers"
