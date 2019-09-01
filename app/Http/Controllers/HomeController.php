@@ -204,6 +204,17 @@ class HomeController extends Controller
         Session::put('message','Venue Reservation is updated Successfully');
         return Redirect::to('/training/venueRes');
     }
+    public function view_venueres($id){
+        $allvenueresinfo=DB::table('venuereservations')
+                         ->join('venues', 'venuereservations.venue_id', '=', 'venues.id')
+                         ->select('venuereservations.*', 'venues.name as venueName', 'venues.price as vprice')
+                         ->where('venuereservations.id',$id)
+                        ->first();
+        $manage_venueres=view('admin.training.viewvenueRes')
+                         ->with('allvenueresinfo',$allvenueresinfo);
+        return view('admin.master')
+                         ->with('admin.training.viewvenueRes',$manage_venueres);
+    }
     public function venueAlloc(){
         return view('admin.training.venueAlloc');
     }

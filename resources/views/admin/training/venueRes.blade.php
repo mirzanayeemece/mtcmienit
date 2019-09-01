@@ -71,8 +71,9 @@
                 @endif
             </td>
             <td width="15%" align="right">
-              <a href="{{URL::to('edit_venueres/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-              <a href="{{URL::to('delete_venueres/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
+              <a href="{{URL::to('view_venueres/'.$row->id)}}" class="" title="View"><img src="{{asset('img')}}/view.gif" alt="view" height="20px" width="20px"></a>
+              <a href="{{URL::to('edit_venueres/'.$row->id)}}" class="" title="Edit"><img src="{{asset('img')}}/edit.gif" alt="edit" height="20px" width="20px"></a>
+              <a href="{{URL::to('delete_venueres/'.$row->id)}}" class="" title="Delete" id="delete"><img src="{{asset('img')}}/delete.gif" alt="delete" height="20px" width="20px"></a>
             </td>
         </tr>
       @endforeach
