@@ -19,7 +19,11 @@ class CreateVenuereservationsTable extends Migration
             $table->string('contact_no', 30);
             $table->date('start_date');
             $table->date('end_date')->nullable($value = true);
-            $table->integer('venue_id');
+            $table->unsignedInteger('venue_id');
+            $table->foreign('venue_id')
+                  ->references('id')->on('venues')
+                  ->onUpdate('cascade')
+                  ->onDelete('restrict');
             $table->integer('no_of_attendee');
             $table->string('price', 20)->nullable($value = true);
             $table->smallInteger('status');

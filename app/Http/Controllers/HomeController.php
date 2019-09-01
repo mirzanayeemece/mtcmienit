@@ -71,11 +71,18 @@ class HomeController extends Controller
     //DELETE VENUE IN DATABASE
     public function delete_venue($id)
     {
+      try {
         DB::table('venues')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Venue is deleted Successfully');
         return Redirect::to('/training/venue');
+        } catch (Exception $e) {
+            // report($e);
+            // return false;
+            Session::put('message', 'This venue can not be deleted');
+            return Redirect::to('/training/venue');
+        }  
     }
     //EDIT VENUE IN DATABASE
     public function edit_venue($id)
