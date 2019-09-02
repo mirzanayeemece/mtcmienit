@@ -49,9 +49,9 @@
                 </p>
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-left">Room No:</label>
+                    <label for="room_no" class="col-md-4 col-form-label text-md-left">Room No:</label>
                     <div class="col-md-6">
-                      <input type="text" class="form-control" id="name" name="name" required>
+                      <input type="text" class="form-control" id="room_no" name="room_no" required>
                     </div>
                 </div>
 
@@ -87,18 +87,6 @@
                     <select id="floor_id" name="floor_id" class="form-control" required>
                       <option value>--Choose One--</option>
                       @foreach($floor_info as $row)
-                        <option value="{{ $row->id }}">{{ $row->name }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="building_id" class="col-md-4 col-form-label text-md-left">Building Name:</label>
-                  <div class="col-md-6">
-                    <select id="building_id" name="building_id" class="form-control" required>
-                      <option value>--Choose One--</option>
-                      @foreach($building_info as $row)
                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                       @endforeach
                     </select>

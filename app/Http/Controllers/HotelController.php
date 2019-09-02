@@ -58,9 +58,9 @@ class HotelController extends Controller
     public function save_building(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100'],
+          'name'  => ['required', 'string', 'max:100','unique:buildings'],
           'type_id' => ['required'],
-          'description'  => ['string', 'max:255']
+          'description'  => ['max:255']
         ]);
         $data = array();
         $data['name'] = $request->name;
@@ -95,8 +95,8 @@ class HotelController extends Controller
     public function save_building_type(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100'],
-          'description'  => ['string', 'max:255']
+          'name'  => ['required', 'string', 'max:100','unique:building_types'],
+          'description'  => ['max:255']
         ]);
         $data = array();
         $data['name'] = $request->name;
@@ -148,10 +148,10 @@ class HotelController extends Controller
     public function save_floor(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100'],
+          'name'  => ['required', 'string', 'max:100','unique:floors'],
           'building_id' => ['required'],
           'type_id' => ['required'],
-          'description'  => ['string', 'max:255']
+          'description'  => ['max:255']
         ]);
         $data = array();
         $data['name'] = $request->name;
@@ -184,8 +184,8 @@ class HotelController extends Controller
     public function save_floor_type(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100'],
-          'description'  => ['string', 'max:255']
+          'name'  => ['required', 'string', 'max:100','unique:floor_types'],
+          'description'  => ['max:255']
         ]);
         $data = array();
         $data['name'] = $request->name;
@@ -247,15 +247,15 @@ class HotelController extends Controller
     public function save_room(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100'],
+          'room_no'  => ['required', 'string', 'max:100','unique:rooms'],
           'price'  => ['required', 'integer', 'min:0'],
           'capacity'  => ['required', 'integer', 'min:0'],
-          'floor_id' => ['required'],
-          'type_id' => ['required'],
+          'floor_id' => ['required', 'integer'],
+          'type_id' => ['required', 'integer'],
           'description'  => ['max:255']
         ]);
         $data = array();
-        $data['room_no'] = $request->name;
+        $data['room_no'] = $request->room_no;
         $data['price'] = $request->price;
         $data['persons_capacity'] = $request->capacity;
         $data['category_id'] = $request->type_id;
@@ -287,10 +287,10 @@ class HotelController extends Controller
     public function save_room_category(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100'],
+          'name'  => ['required', 'string', 'max:100', 'unique:room_categories'],
           'price'  => ['required', 'integer', 'min:0'],
           'vat'  => ['required', 'integer', 'min:0'],
-          'description'  => ['string', 'max:255']
+          'description'  => ['max:255']
         ]);
         $data = array();
         $data['name'] = $request->name;

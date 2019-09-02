@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/hotel_management/building/addfloortype')}}" class="btn btn-primary">ADD NEW FLOOR TYPE</a>
+                    <a href="{{URL::to('/hotel_management/floor/addfloortype')}}" class="btn btn-primary">ADD NEW FLOOR TYPE</a>
                 </div>
 
                 <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">

@@ -56,8 +56,8 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="description" class="col-md-4 col-form-label text-md-left">Description:</label>
-                    <div class="col-md-6">
+                  <label for="description" class="col-md-4 col-form-label text-md-left">Description:</label>
+                  <div class="col-md-6">
                     <textarea type="text" class="form-control" id="description" name="description"></textarea>
                   </div>
                 </div>
