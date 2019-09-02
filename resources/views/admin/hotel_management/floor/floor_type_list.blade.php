@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Rooms List</div>
+                <div class="card-header"><big> <strong>FLOOR TYPES LIST</strong> </big></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/hotel_management/room/addroom')}}" class="btn btn-primary">Add New Room</a>
+                    <a href="{{URL::to('/hotel_management/building/addfloortype')}}" class="btn btn-primary">ADD NEW FLOOR TYPE</a>
                 </div>
 
                 <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
@@ -26,52 +26,20 @@
                     @endphp
                 </p>
 
-                <table id="room" class="table table-bordered">
+                <table id="floor_type" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Room No:</th>
-                        <th>Category</th>
-                        <th>Floor Name</th>
-                        <th>Building Name</th>
-                        <th>Price</th>
-                        <th>Capacity</th>
+                        <th>Name</th>
                         <th>Description</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach($rooms_info as $row) 
+                  @foreach($floor_type_list_info as $row) 
                     <tr>
                         <td width="5%">{{$row->id}}</td>
-                        <td>{{$row->room_no}}</td>
-                        <td>
-                            @foreach($room_category_info as $row_category) 
-                                @if($row_category->id == $row->category_id)
-                                    {{$row_category->name}}
-                                @endif
-                            @endforeach
-                        </td>
-                        <td>
-                            @foreach($floor_info as $row_floor) 
-                                @if($row_floor->id == $row->floor_id)
-                                    {{$row_floor->name}}
-                                @endif
-                            @endforeach
-                        </td>
-                        <td>
-                            @foreach($floor_info as $row_floor) 
-                                @if($row_floor->id == $row->floor_id)
-                                    @foreach($building_info as $row_building) 
-                                        @if($row_building->id == $row_floor->building_id)
-                                            {{$row_building->name}}
-                                        @endif
-                                    @endforeach
-                                @endif
-                            @endforeach
-                        </td>
-                        <td>{{$row->price}}</td>
-                        <td>{{$row->persons_capacity}}</td>
+                        <td>{{$row->name}}</td>
                         <td>{{$row->description}}</td>
                         <td width="15%" align="right">
                           <!-- <a href="{{URL::to('edit_building/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
@@ -96,7 +64,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#room').DataTable({
+        $('#floor_type').DataTable({
             "paging": true,
             "ordering":  true,
             "pagingType": "full_numbers"

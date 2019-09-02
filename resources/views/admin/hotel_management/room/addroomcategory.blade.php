@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"> <big> <strong>ADD NEW BUILDING</strong> </big> </div>
+                <div class="card-header"> <big> <strong>ADD NEW ROOM CATEGORY</strong> </big> </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/hotel_management/building/building_list')}}" class="btn btn-primary">BACK</a>
+                    <a href="{{URL::to('/hotel_management/room/room_category_list')}}" class="btn btn-primary">BACK</a>
                 </div>
    
                 @if (count($errors) > 0)
@@ -35,8 +35,8 @@
                 @endif
 
               <!--form-->
-              <form class="" action="{{ url('/savebuilding') }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
-                @csrf
+              <form class="" action="{{ url('/saveroomcategory') }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
+                @csrf    
 
                 <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
                   @php
@@ -49,22 +49,24 @@
                 </p>
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-left">Building Name:</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-left">Room Category Name:</label>
                     <div class="col-md-6">
                       <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="type_id" class="col-md-4 col-form-label text-md-left">Building Type:</label>
-                  <div class="col-md-6">
-                    <select id="type_id" name="type_id" class="form-control" required>
-                      <option value>--Choose One--</option>
-                      @foreach($building_type_info as $row)
-                        <option value="{{ $row->id }}">{{ $row->name }}</option>
-                      @endforeach
-                    </select>
-                  </div>
+                    <label for="price" class="col-md-4 col-form-label text-md-left">Price:</label>
+                    <div class="col-md-6">
+                      <input type="text" class="form-control" id="price" name="price" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="vat" class="col-md-4 col-form-label text-md-left">VAT:</label>
+                    <div class="col-md-6">
+                      <input type="text" class="form-control" id="vat" name="vat" required>
+                    </div>
                 </div>
 
                 <div class="form-group row">

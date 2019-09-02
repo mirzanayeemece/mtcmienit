@@ -62,10 +62,29 @@ Route::get('/admin/role_wise_permission/rolewisepermission', 'AdminController@ro
 //change-password
 Route::get('/admin/change_password/changepassword', 'AdminController@change_password')->name('Change Password');
 
-//hotel-management
-Route::get('/hotel_management/building/building_list', 'HotelController@building')->name('Building');
+
+//------HOTEL-MANAGEMENT-------//
+
+//BUILDING
+Route::get('/hotel_management/building/building_list', 'HotelController@building')->name('Buildings');
 Route::get('/hotel_management/building/addbuilding', 'HotelController@add_building')->name('Add Building');
-Route::get('/hotel_management/building/building_type_list', 'HotelController@building_type')->name('Building Type');
-Route::get('/hotel_management/building/addbuildingtype', 'HotelController@add_building_type')->name('Building Type');
+Route::get('/hotel_management/building/building_type_list', 'HotelController@building_type')->name('Building Types');
+Route::get('/hotel_management/building/addbuildingtype', 'HotelController@add_building_type')->name('Add Building Type');
 Route::post('/savebuilding','HotelController@save_building');
 Route::post('/savebuildingtype','HotelController@save_building_type');
+
+//FLOOR
+Route::get('/hotel_management/floor/floor_list', 'HotelController@floor')->name('Floors');
+Route::get('/hotel_management/floor/addfloor', 'HotelController@add_floor')->name('Add Floor');
+Route::get('/hotel_management/floor/floor_type_list', 'HotelController@floor_type')->name('Floor Types');
+Route::get('/hotel_management/floor/addfloortype', 'HotelController@add_floor_type')->name('Add Floor Type');
+Route::post('/savefloor','HotelController@save_floor');
+Route::post('/savefloortype','HotelController@save_floor_type');
+
+//ROOM
+Route::get('/hotel_management/room/room_category_list', 'HotelController@room_category')->name('Room Categories');
+Route::get('/hotel_management/room/addroomcategory', 'HotelController@add_room_category')->name('Add Room Category');
+Route::get('/hotel_management/room/room_list', 'HotelController@room')->name('Rooms');
+Route::get('/hotel_management/room/addroom', 'HotelController@add_room')->name('Add Room');
+Route::post('/saveroom','HotelController@save_room');
+Route::post('/saveroomcategory','HotelController@save_room_category');
