@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"> <big> <strong>EDIT BUILDING TYPE</strong> </big> </div>
+                <div class="card-header"> <big> <strong>EDIT ROOM CATEGORY</strong> </big> </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/hotel_management/building/building_type_list')}}" class="btn btn-primary">Back</a>
+                    <a href="{{URL::to('/hotel_management/room/room_category_list')}}" class="btn btn-primary">Back</a>
                 </div>
    
                 @if (count($errors) > 0)
@@ -35,8 +35,8 @@
                 @endif
 
                 <!---------------FORM--------------->
-                <form class="" action="{{ url('/updatebuildingtype',$building_type_info->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
-                  {{ csrf_field() }}    
+                <form class="" action="{{ url('/updateroomcategory',$room_category_info->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
+                  @csrf
 
                   <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
                   	@php
@@ -51,12 +51,22 @@
 
                   <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" value="{{$building_type_info->name}}" id="name" name="name" required>
+                    <input type="text" class="form-control" value="{{$room_category_info->name}}" id="name" name="name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" class="form-control" value="{{$room_category_info->price}}" id="price" name="price" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="vat">VAT:</label>
+                    <input type="number" class="form-control" value="{{$room_category_info->vat}}" id="vat" name="vat" required>
                   </div>
 
                   <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" type="text" cols="80" rows="4" placeholder="" class="form-control">{{$building_type_info->description}}</textarea>
+                    <textarea id="description" name="description" type="text" cols="80" rows="4" placeholder="" class="form-control">{{$room_category_info->description}}</textarea>
                   </div>
 
                   <!-- Button -->

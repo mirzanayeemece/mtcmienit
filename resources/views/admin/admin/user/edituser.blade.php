@@ -16,62 +16,55 @@
                     <a href="{{URL::to('/admin/user/user')}}" class="btn btn-primary">Back</a>
                 </div>
    
-   @if (count($errors) > 0)
-    <div class="alert alert-danger" style="padding: 0 30px 0 30px;">
-     Upload Validation Error<br><br>
-     <ul>
-      @foreach ($errors->all() as $error)
-       <li>{{ $error }}</li>
-      @endforeach
-     </ul>
-    </div>
-   @endif
-   @if ($message = Session::get('success'))
-   <div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-           <strong>{{ $message }}</strong>
-   </div>
-   @endif
+                @if (count($errors) > 0)
+                  <div class="alert alert-danger" style="padding: 0 30px 0 30px;">
+                   Upload Validation Error<br><br>
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
 
-  <!--form-->
- 
-  <form class="" action="{{ url('/update_user',$all_users_info->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
-    {{ csrf_field() }}    
+                @if ($message = Session::get('success'))
+                  <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                         <strong>{{ $message }}</strong>
+                  </div>
+                @endif
 
-    <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
-        @php
-          $message=Session::get('message');
-            if($message) {
-              echo $message;
-              Session::put('message',null);
-            }
-        @endphp
-            
-      </p>
+                <!---------------FORM--------------->
+                <form class="" action="{{ url('/update_user',$all_users_info->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
+                  {{ csrf_field() }}    
 
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" value="{{$all_users_info->name}}" id="name" name="name" required>
-      </div>
+                  <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
+                      @php
+                        $message=Session::get('message');
+                          if($message) {
+                            echo $message;
+                            Session::put('message',null);
+                          }
+                      @endphp
+                          
+                  </p>
 
-      <div class="form-group">
-        <label for="location">Email:</label>
-        <input type="text" class="form-control" value="{{$all_users_info->email}}" id="email" name="email" required>
-      </div>
+                  <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" value="{{$all_users_info->name}}" id="name" name="name" required>
+                  </div>
 
-      
+                  <div class="form-group">
+                    <label for="location">Email:</label>
+                    <input type="text" class="form-control" value="{{$all_users_info->email}}" id="email" name="email" required>
+                  </div>
 
-      
-      
+                  <!-- Button -->
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-success" >Update</button>
+                  </div>
 
-        <!-- Button -->
-        <div class="form-group">
-            <button type="submit" class="btn btn-success" >Update</button>
-        </div>
-
-        
-    </form>
-
+                </form>
 
             </div>
         </div>

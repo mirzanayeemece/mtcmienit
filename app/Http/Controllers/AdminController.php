@@ -82,6 +82,12 @@ class AdminController extends Controller
     //UPDATE USER IN DATABASE
     public function update_user(Request $request, $id)
     {
+
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:255'],
+          'email'  => ['required', 'string', 'email', 'max:255', 'unique:users']
+        ]);
+
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -113,10 +119,10 @@ class AdminController extends Controller
     public function saverole(Request $request)
     {
         $this->validate($request, [
-          'name'  => 'required|max:50',
-          'description'  => 'required|max:120',
-          
+          'name'  => ['required', 'string', 'max:100', 'unique:roles'],
+          'description'  => ['required', 'string', 'max:255']
         ]);
+
         $data = array();
         $data['name'] = $request->name;
         $data['description'] = $request->description;
@@ -140,6 +146,11 @@ class AdminController extends Controller
     //UPDATE USERROLE IN DATABASE
     public function update_user_role(Request $request, $id)
     {
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:100', 'unique:roles'],
+          'description'  => ['required', 'string', 'max:255']
+        ]);
+
         $data = array();
         $data['name'] = $request->name;
         $data['description'] = $request->description;

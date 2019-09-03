@@ -74,8 +74,8 @@
                         <td>{{$row->persons_capacity}}</td>
                         <td>{{$row->description}}</td>
                         <td width="15%" align="right">
-                          <!-- <a href="{{URL::to('edit_building/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-                          <a href="{{URL::to('delete_building/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a> -->
+                          <a href="{{URL::to('editroom/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+                          <a href="{{URL::to('deleteroom/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                   @endforeach

@@ -72,6 +72,13 @@ Route::get('/hotel_management/building/building_type_list', 'HotelController@bui
 Route::get('/hotel_management/building/addbuildingtype', 'HotelController@add_building_type')->name('Add Building Type');
 Route::post('/savebuilding','HotelController@save_building');
 Route::post('/savebuildingtype','HotelController@save_building_type');
+Route::get('/editbuilding/{id}','HotelController@edit_building')->name('Edit Building');
+Route::post('/updatebuilding/{id}','HotelController@update_building');
+Route::get('/deletebuilding/{id}','HotelController@delete_building');
+Route::get('/editbuildingtype/{id}','HotelController@edit_building_type')->name('Edit Building Type');
+Route::post('/updatebuildingtype/{id}','HotelController@update_building_type');
+Route::get('/deletebuildingtype/{id}','HotelController@delete_building_type');
+
 
 //FLOOR
 Route::get('/hotel_management/floor/floor_list', 'HotelController@floor')->name('Floors');
@@ -80,6 +87,12 @@ Route::get('/hotel_management/floor/floor_type_list', 'HotelController@floor_typ
 Route::get('/hotel_management/floor/addfloortype', 'HotelController@add_floor_type')->name('Add Floor Type');
 Route::post('/savefloor','HotelController@save_floor');
 Route::post('/savefloortype','HotelController@save_floor_type');
+Route::get('/editfloortype/{id}','HotelController@edit_floor_type')->name('Edit Floor Type');
+Route::post('/updatefloortype/{id}','HotelController@update_floor_type');
+Route::get('/deletefloortype/{id}','HotelController@delete_floor_type');
+Route::get('/editfloor/{id}','HotelController@edit_floor')->name('Edit Floor');
+Route::post('/updatefloor/{id}','HotelController@update_floor');
+Route::get('/deletefloor/{id}','HotelController@delete_floor');
 
 //ROOM
 Route::get('/hotel_management/room/room_category_list', 'HotelController@room_category')->name('Room Categories');
@@ -88,3 +101,9 @@ Route::get('/hotel_management/room/room_list', 'HotelController@room')->name('Ro
 Route::get('/hotel_management/room/addroom', 'HotelController@add_room')->name('Add Room');
 Route::post('/saveroom','HotelController@save_room');
 Route::post('/saveroomcategory','HotelController@save_room_category');
+Route::get('/editroomcategory/{id}','HotelController@edit_room_category')->name('Edit Room Category');
+Route::post('/updateroomcategory/{id}','HotelController@update_room_category');
+Route::get('/deleteroomcategory/{id}','HotelController@delete_room_category');
+Route::get('/editroom/{id}','HotelController@edit_room')->name('Edit Room');
+Route::post('/updateroom/{id}','HotelController@update_room');
+Route::get('/deleteroom/{id}','HotelController@delete_room');
