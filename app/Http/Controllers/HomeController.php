@@ -10,6 +10,7 @@ use DB;
 use Auth;
 use PDF;
 use Session;
+use Exception;
 Session_start();
 
 class HomeController extends Controller
@@ -79,10 +80,8 @@ class HomeController extends Controller
         Session::put('message', 'Venue is deleted Successfully');
         return Redirect::to('/training/venue');
         } catch (Exception $e) {
-            // report($e);
-            // return false;
-            Session::put('message', 'This venue can not be deleted');
-            return Redirect::to('/training/venue');
+            //return back()->withError($e->getMessage());
+            return back()->withError('This venue cannot be deleted because it is reserved or allocated or cancelled. To delete this venue, delete reservation first, then delete it.');
         }  
     }
     //EDIT VENUE IN DATABASE
