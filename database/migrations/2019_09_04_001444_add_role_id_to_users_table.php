@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFloorIdToRoomsTable extends Migration
+class AddRoleIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddFloorIdToRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::table('rooms', function (Blueprint $table) {
-            $table->integer('floor_id')->unsigned();
-            $table->foreign('floor_id')->references('id')->on('floors')->onUpdate('cascade');
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('role_id')->unsigned();
+            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class AddFloorIdToRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::table('rooms', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

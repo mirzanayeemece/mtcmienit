@@ -49,14 +49,30 @@
                           
                   </p>
 
-                  <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" value="{{$all_users_info->name}}" id="name" name="name" required>
+                  <div class="form-group row">
+                    <label for="name" class="col-md-2 col-form-label text-md-left">Name:</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" value="{{$all_users_info->name}}" id="name" name="name" required>
+                    </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="location">Email:</label>
-                    <input type="text" class="form-control" value="{{$all_users_info->email}}" id="email" name="email" required>
+                  <div class="form-group row">
+                    <label for="location" class="col-md-2 col-form-label text-md-left">Email:</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" value="{{$all_users_info->email}}" id="email" name="email" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="role" class="col-md-2 col-form-label text-md-left">{{ __('Role') }}</label>
+                    <div class="col-md-8">
+                        <select id="role" name="role" class="form-control" required>
+                          <option value>--Choose One--</option>
+                            @foreach($role_info as $row)
+                              <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                   </div>
 
                   <!-- Button -->

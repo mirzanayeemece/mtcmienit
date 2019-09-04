@@ -44,7 +44,11 @@
             <td width="5%">{{$row->id}}</td>
             <td>{{$row->name}}</td>
             <td>{{$row->email}}</td>
-            <td></td>
+            <td>
+                @foreach($role_info as $row_role)
+                    {{$row_role->name}}
+                @endforeach
+            </td>
             <td width="15%" align="right">
               <a href="{{URL::to('edit_user/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
               <a href="{{URL::to('delete_user/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>

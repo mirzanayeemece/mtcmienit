@@ -28,16 +28,28 @@ class AdminController extends Controller
     //USER
     public function user(){
         $all_users_info=DB::table('users')
+                          ->orderBy('id', 'desc')
+                          ->get();
+        $role_info=DB::table('roles')
                            ->orderBy('id', 'desc')
                            ->get();
         $manage_users=view('admin.admin.user.user')
-                         ->with('all_users_info',$all_users_info);
+                          ->with('all_users_info',$all_users_info)
+                          ->with('role_info',$role_info);
         return view('admin.master')
-                         ->with('admin.admin.user.user',$manage_users);
+                          ->with('admin.admin.user.user',$manage_users);
     }
     //ADD USER
     public function adduser(){
-        return view('admin.admin.user.adduser');
+
+        $role_info=DB::table('roles')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $manage_role=view('admin.admin.user.adduser')
+                          ->with('role_info',$role_info);
+
+        return view('admin.master')
+                          ->with('admin.admin.user.adduser',$manage_role);;
     }
     //ADD USER TO DATABASE
     public function saveuser(Request $request)
@@ -58,6 +70,41 @@ class AdminController extends Controller
         Session::put('message','Venue is Added Successfully');
         return Redirect::to('/admin/user/adduser');
     }
+    //EDIT USER IN DATABASE
+    public function edit_user($id)
+    {
+        $user_info=DB::table('users')
+                            ->where('id',$id)
+                            ->first();
+        $role_info=DB::table('roles')
+                            ->get();
+        
+        $manage_user=view('admin.admin.user.edituser')
+                          ->with('all_users_info',$user_info)
+                          ->with('role_info',$role_info);
+        return view('admin.master')
+                         ->with('admin.admin.user.edituser',$manage_user);
+    }
+    //UPDATE USER IN DATABASE
+    public function update_user(Request $request, $id)
+    {
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:255'],
+          'email'  => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'role'  => ['required']
+        ]);
+
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['role_id'] = $request->role;
+
+        DB::table('users')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','User has been updated Successfully');
+        return Redirect::to('/admin/user/user');
+    }
     //DELETE USER FROM DATABASE
     public function delete_user($id)
     {
@@ -65,37 +112,6 @@ class AdminController extends Controller
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'User has been deleted Successfully');
-        return Redirect::to('/admin/user/user');
-    }
-    //EDIT USER IN DATABASE
-    public function edit_user($id)
-    {
-        $user_info=DB::table('users')
-                           ->where('id',$id)
-                           ->first();
-        
-        $manage_user=view('admin.admin.user.edituser')
-                         ->with('all_users_info',$user_info);
-        return view('admin.master')
-                         ->with('admin.admin.user.edituser',$manage_user);
-    }
-    //UPDATE USER IN DATABASE
-    public function update_user(Request $request, $id)
-    {
-
-        $this->validate($request, [
-          'name'  => ['required', 'string', 'max:255'],
-          'email'  => ['required', 'string', 'email', 'max:255', 'unique:users']
-        ]);
-
-        $data = array();
-        $data['name'] = $request->name;
-        $data['email'] = $request->email;
-
-        DB::table('users')
-             ->where('id',$id)
-             ->update($data);
-        Session::put('message','User has been updated Successfully');
         return Redirect::to('/admin/user/user');
     }
 
