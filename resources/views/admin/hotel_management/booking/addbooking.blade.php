@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"><strong><big>ADD ROOM RESERVATION</big></strong></div>
+                <div class="card-header"><strong><big>ADD ROOM BOOKING</big></strong></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/hotel_management/reservation/room_reservation_list')}}" class="btn btn-primary">BACK</a>
+                    <a href="{{URL::to('/hotel_management/booking/booking_list')}}" class="btn btn-primary">BACK</a>
                 </div>
    
                  @if (count($errors) > 0)
@@ -35,7 +35,7 @@
 
                 <!--form-->
                
-                <form class="" action="{{ url('/savereservation') }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
+                <form class="" action="{{ url('/savebooking') }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
                   @csrf
 
                   <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
@@ -94,9 +94,9 @@
                       <div class="col-md-6">
                       <select id="status" name="status" class="form-control" required>
                         <option value>--Choose One--</option>
-                          <option value="1">{{Config::get('constants.roomResStatus.1')}}</option>
-                          <option value="2">{{Config::get('constants.roomResStatus.2')}}</option>
-                          <option value="3">{{Config::get('constants.roomResStatus.3')}}</option>
+                          <option value="1">{{Config::get('constants.roomBookStatus.1')}}</option>
+                          <option value="2">{{Config::get('constants.roomBookStatus.2')}}</option>
+                          <option value="3">{{Config::get('constants.roomBookStatus.3')}}</option>
                       </select>
                     </div>
                     </div>

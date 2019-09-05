@@ -47,8 +47,8 @@
                             <a class="dropdown-item" href="{{URL::to('/hotel_management/room/room_list')}}">Rooms</a>
                             <a class="dropdown-item" href="{{URL::to('/hotel_management/room/room_category_list')}}">Room Category</a>
                             <a class="dropdown-item" href="{{URL::to('/hotel_management/reservation/room_reservation_list')}}">Reservation</a>
-                            <a class="dropdown-item" href="">Booking</a>
-                            <a class="dropdown-item" href="">Billing</a>
+                            <a class="dropdown-item" href="{{URL::to('/hotel_management/booking/booking_list')}}">Booking</a>
+                            <a class="dropdown-item" href="{{URL::to('/hotel_management/billing/billing_list')}}">Billing</a>
                             <a class="dropdown-item" href="{{URL::to('/hotel_management/floor/floor_list')}}">Floors</a>
                             <a class="dropdown-item" href="{{URL::to('/hotel_management/floor/floor_type_list')}}">Floor Types</a>
                             <a class="dropdown-item" href="{{URL::to('/hotel_management/building/building_list')}}">Buildings</a>

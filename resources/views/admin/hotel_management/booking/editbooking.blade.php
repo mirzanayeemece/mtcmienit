@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"><strong><big>EDIT ROOM RESERVATION</big></strong></div>
+                <div class="card-header"><strong><big>EDIT ROOM BOOKING</big></strong></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/hotel_management/reservation/room_reservation_list')}}" class="btn btn-primary">Back</a>
+                    <a href="{{URL::to('/hotel_management/booking/booking_list')}}" class="btn btn-primary">Back</a>
                 </div>
    
                 @if (count($errors) > 0)
@@ -35,7 +35,7 @@
 
                 <!--form-->
                
-                <form class="" action="{{ url('/updatereservation',$reservation_info->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
+                <form class="" action="{{ url('/updatebooking',$booking->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
                   @csrf    
 
                   <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
@@ -52,28 +52,28 @@
                     <div class="form-group row">
                       <label for="guest_name" class="col-md-4 col-form-label text-md-left">Guest Name:</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control" value="{{$reservation_info->guest_name}}" id="guest_name" name="guest_name" required>
+                      <input type="text" class="form-control" value="{{$booking->guest_name}}" id="guest_name" name="guest_name" required>
                     </div>
                     </div>
 
                     <div class="form-group row">
                       <label for="guest_contact" class="col-md-4 col-form-label text-md-left">Contact No:</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control" value="{{$reservation_info->guest_contact}}" id="guest_contact" name="guest_contact" required>
+                      <input type="text" class="form-control" value="{{$booking->guest_contact}}" id="guest_contact" name="guest_contact" required>
                     </div>
                     </div>
 
                     <div class="form-group row">
                       <label for="start_date" class="col-md-4 col-form-label text-md-left">Date/Start Date:</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control datepicker" value="{{$reservation_info->start_date}}" id="start_date" name="start_date" autocomplete="off" required>
+                      <input type="text" class="form-control datepicker" value="{{$booking->start_date}}" id="start_date" name="start_date" autocomplete="off" required>
                     </div>
                     </div>
 
                     <div class="form-group row">
                       <label for="end_date" class="col-md-4 col-form-label text-md-left">End Date:</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control datepicker" value="{{$reservation_info->end_date}}" id="end_date" name="end_date" autocomplete="off">
+                      <input type="text" class="form-control datepicker" value="{{$booking->end_date}}" id="end_date" name="end_date" autocomplete="off">
                     </div>
                     </div>
 
@@ -84,8 +84,8 @@
                         <option value>--Choose One--</option>
                           @foreach($room_info as $row_room)
                             <option value="{{ $row_room->id }}"
-                              @if($reservation_info->room_id == $row_room->id)
-                                {{'Selected'}}
+                              @if($booking->room_id == $row_room->id)
+                                {{ 'Selected' }}
                               @endif
                               >{{ $row_room->room_no }}</option>
                           @endforeach
@@ -96,25 +96,25 @@
                     <div class="form-group row">
                       <label for="status" class="col-md-4 col-form-label text-md-left">Status:</label>
                       <div class="col-md-6">
-                      <select id="status" name="status" class="form-control" required>
-                        <option value>--Choose One--</option>
-                          <option value="1"
-                           @if($reservation_info->status == '1')
-                             {{'Selected'}}
-                           @endif
-                           >{{Config::get('constants.roomResStatus.1')}}</option>
-                          <option value="2"
-                           @if($reservation_info->status == '2')
-                             {{'Selected'}}
-                           @endif
-                           >{{Config::get('constants.roomResStatus.2')}}</option>
-                           <option value="3"
-                           @if($reservation_info->status == '3')
-                             {{'Selected'}}
-                           @endif
-                           >{{Config::get('constants.roomResStatus.3')}}</option>
-                      </select>
-                    </div>
+                        <select id="status" name="status" class="form-control" required>
+                          <option value>--Choose One--</option>
+                            <option value="1"
+                             @if($booking->status == '1')
+                               {{'Selected'}}
+                             @endif
+                             >{{Config::get('constants.roomBookStatus.1')}}</option>
+                            <option value="2"
+                             @if($booking->status == '2')
+                               {{'Selected'}}
+                             @endif
+                             >{{Config::get('constants.roomBookStatus.2')}}</option>
+                             <option value="3"
+                             @if($booking->status == '3')
+                               {{'Selected'}}
+                             @endif
+                             >{{Config::get('constants.roomBookStatus.3')}}</option>
+                        </select>
+                      </div>
                     </div>      
 
                     <!-- Button -->

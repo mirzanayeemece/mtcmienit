@@ -662,7 +662,6 @@ class HotelController extends Controller
         $data['room_id'] = $request->room_id;
         $data['status'] = $request->status;
         $data['created_at'] = now();
-        
 
         DB::table('room_reservations')->insert($data);
         Session::put('message','Room Reservation is Added Successfully');
@@ -674,7 +673,6 @@ class HotelController extends Controller
                            ->where('id',$id)
                            ->first();
         $room_info=DB::table('rooms')
-                            
                             ->get();
         $manage_reservation_view=view('admin.hotel_management.reservation.viewreservation')
                             ->with('reservation',$reservation)
@@ -731,5 +729,122 @@ class HotelController extends Controller
                 ->delete();
         Session::put('message', 'Room Reservation has been deleted Successfully');
         return Redirect::to('/hotel_management/reservation/room_reservation_list');
+    }
+
+
+
+    //------- METHODS FOR ROOM-BOOKING --------//
+    //ROOM-BOOKING
+    public function room_booking(){
+        $booking_info=DB::table('room_bookings')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $room_info=DB::table('rooms')
+                            ->get();
+        $manage_room_booking=view('admin.hotel_management.booking.booking_list')
+                            ->with('booking_info',$booking_info)
+                            ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.booking.booking_list',$manage_room_booking);
+    }
+    //ADD ROOM-BOOKING
+    public function add_booking(){
+
+        $room_info = DB::table('rooms')
+                            ->orderBy('id','desc')
+                            ->get();
+
+        $manage_booking = view('admin.hotel_management.booking.addbooking')
+                            ->with('room_info',$room_info);
+
+        return view('admin.master')
+                        ->with('admin.hotel_management.booking.addbooking',$manage_booking);
+    }
+    //SAVE ROOM-BOOKING TO DATABASE
+    public function save_booking(Request $request)
+    {
+        $this->validate($request, [
+          'guest_name'  => ['required', 'string', 'max:100','unique:room_bookings'],
+          'contact_no'  => ['required'],
+          'start_date'  => ['required','date'],
+           'end_date' => ['min:{{ start_date }}'],
+          'room_id' => ['required', 'integer'],
+          'status'  => ['required', 'max:5']
+        ]);
+        $data = array();
+        $data['guest_name'] = $request->guest_name;
+        $data['guest_contact'] = $request->contact_no;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['room_id'] = $request->room_id;
+        $data['status'] = $request->status;
+        $data['created_at'] = now();
+
+        DB::table('room_bookings')->insert($data);
+        Session::put('message','Room Booking is Added Successfully');
+        return Redirect::to('/hotel_management/booking/addbooking');
+    }
+    //VIEW ROOM-BOOKING
+    public function view_booking($id){
+        $booking=DB::table('room_bookings')
+                           ->where('id',$id)
+                           ->first();
+        $room_info=DB::table('rooms')
+                            ->get();
+        $manage_booking_view=view('admin.hotel_management.booking.viewbooking')
+                            ->with('booking',$booking)
+                            ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.booking.viewbooking',$manage_booking_view);
+    }
+    //EDIT ROOM-BOOKING
+    public function edit_booking($id)
+    {
+        $booking=DB::table('room_bookings')
+                           ->where('id',$id)
+                           ->first();
+        $room_info=DB::table('rooms')
+                           ->get();
+        
+        $manage_booking=view('admin.hotel_management.booking.editbooking')
+                         ->with('booking',$booking)
+                         ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.booking.editbooking',$manage_booking);
+    }
+    //UPDATE ROOM-BOOKING
+    public function update_booking(Request $request, $id)
+    {
+        $this->validate($request, [
+          'guest_name'  => ['required', 'string', 'max:100','unique:room_bookings'],
+          'guest_contact'  => ['required'],
+          'start_date'  => ['required','date'],
+          // 'end_date' => ['date'],
+          'room_id' => ['required', 'integer'],
+          'status'  => ['required', 'max:5']
+        ]);
+
+        $data = array();
+        $data['guest_name'] = $request->guest_name;
+        $data['guest_contact'] = $request->guest_contact;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['room_id'] = $request->room_id;
+        $data['status'] = $request->status;
+
+        DB::table('room_bookings')
+                ->where('id',$id)
+                ->update($data);
+        Session::put('message','Room Booking has been updated Successfully');
+        return Redirect::to('/hotel_management/booking/booking_list');
+    }
+    //DELETE ROOM-BOOKING FROM DATABASE
+    public function delete_booking($id)
+    {
+        DB::table('room_bookings')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Room Booking has been deleted Successfully');
+        return Redirect::to('/hotel_management/booking/booking_list');
     }
 }

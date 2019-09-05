@@ -65,8 +65,6 @@
                                   {{Config::get('constants.roomResStatus.1')}}
                                 @elseif($row->status == '2')
                                   {{Config::get('constants.roomResStatus.2')}}
-                                @elseif($row->status == '3')
-                                  {{Config::get('constants.roomResStatus.3')}}
                                 @endif
                             </td>
                             <td width="15%" align="right">
@@ -99,6 +97,33 @@
             "pagingType": "full_numbers"
           });
     } );
+</script>
+<script type="text/javascript">
+    function checkDateRange(start, end) {
+       // Parse the entries
+       var startDate = Date.parse(start);
+       var endDate = Date.parse(end);
+       // Make sure they are valid
+       if (isNaN(startDate)) {
+          alert("The start date provided is not valid, please enter a valid date.");
+          return false;
+       }
+       if (isNaN(endDate)) {
+           alert("The end date provided is not valid, please enter a valid date.");
+           return false;
+       }
+       // Check the date range, 86400000 is the number of milliseconds in one day
+       var difference = (endDate - startDate) / (86400000 * 7);
+       if (difference < 0) {
+           alert("The start date must come before the end date.");
+           return false;
+       }
+       if (difference <= 1) {
+           alert("The range must be at least seven days apart.");
+           return false;
+       }
+       return true;
+   }
 </script>
 
 @endsection
