@@ -13,6 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                      <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                     <a href="{{URL::to('/hotel_management/floor/addfloortype')}}" class="btn btn-primary">ADD NEW FLOOR TYPE</a>
                 </div>
 

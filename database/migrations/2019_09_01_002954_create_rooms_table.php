@@ -17,14 +17,19 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->String('room_no',100);
             $table->integer('price');
-
-            //need them later after Nayeem's migration
-            // $table->integer('floor_id')->unsigned();
-            // $table->foreign('floor_id')->references('id')->on('floors')->onUpdate('cascade');
-
+            $table->integer('floor_id')->unsigned();
+            $table->foreign('floor_id')
+                                ->references('id')
+                                ->on('floors')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->integer('persons_capacity');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('room_categories')->onUpdate('cascade');
+            $table->foreign('category_id')
+                                ->references('id')
+                                ->on('room_categories')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->String('description',255)->nullable();
             $table->timestamps();
         });

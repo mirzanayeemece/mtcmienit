@@ -17,10 +17,10 @@ class CreateEmployeesTable extends Migration
             $table->increments('id');
             $table->integer('department_id')->unsigned();
             $table->foreign('department_id')
-                        ->references('id')
-                        ->on('departments')
-                        ->onUpdate('cascade')
-                        ->onDelete('restrict');
+                                ->references('id')
+                                ->on('departments')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->string('name',100);
             $table->date('date_of_birth');
             $table->string('phone',15);
@@ -28,16 +28,16 @@ class CreateEmployeesTable extends Migration
             $table->string('blood_group',10);
             $table->integer('designation_id')->unsigned();
             $table->foreign('designation_id')
-                        ->references('id')
-                        ->on('employee_designations')
-                        ->onUpdate('cascade')
-                        ->onDelete('restrict');
+                                ->references('id')
+                                ->on('employee_designations')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->integer('salary_grade_id')->unsigned();
             $table->foreign('salary_grade_id')
-                        ->references('id')
-                        ->on('salary_grade')
-                        ->onUpdate('cascade')
-                        ->onDelete('restrict');
+                                ->references('id')
+                                ->on('salary_grade')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->string('emergency_contact',15);
             $table->string('other');
             $table->timestamps();

@@ -21,9 +21,10 @@ class CreateRoomBookingsTable extends Migration
             $table->date('end_date')->nullable();
             $table->unsignedInteger('room_id');
             $table->foreign('room_id')
-                  ->references('id')->on('rooms')
-                  ->onUpdate('cascade')
-                  ->onDelete('restrict');
+                                ->references('id')
+                                ->on('rooms')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->smallInteger('status');
             $table->timestamps();
         });

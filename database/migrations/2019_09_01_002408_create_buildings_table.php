@@ -17,7 +17,11 @@ class CreateBuildingsTable extends Migration
             $table->increments('id');
             $table->String('name',100);
             $table->integer('building_type')->unsigned();
-            $table->foreign('building_type')->references('id')->on('building_types')->onUpdate('cascade');
+            $table->foreign('building_type')
+                                ->references('id')
+                                ->on('building_types')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->String('description',255)->nullable();
             $table->timestamps();
         });

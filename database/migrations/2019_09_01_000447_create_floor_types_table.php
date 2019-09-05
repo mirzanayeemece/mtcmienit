@@ -16,7 +16,7 @@ class CreateFloorTypesTable extends Migration
         Schema::create('floor_types', function (Blueprint $table) {
             $table->increments('id');
             $table->String('name',100);
-            $table->String('description',255);
+            $table->String('description',255)->nullable();
             $table->timestamps();
         });
     }

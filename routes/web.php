@@ -107,3 +107,12 @@ Route::get('/deleteroomcategory/{id}','HotelController@delete_room_category');
 Route::get('/editroom/{id}','HotelController@edit_room')->name('Edit Room');
 Route::post('/updateroom/{id}','HotelController@update_room');
 Route::get('/deleteroom/{id}','HotelController@delete_room');
+
+//RESERVATION
+Route::get('/hotel_management/reservation/room_reservation_list', 'HotelController@room_reservation')->name('Room Reservations');
+Route::get('/hotel_management/reservation/addreservation', 'HotelController@add_reservation')->name('Add Room Reservation');
+Route::post('/savereservation','HotelController@save_reservation');
+Route::get('/viewreservation/{id}','HotelController@view_reservation')->name('View Room Reservation');
+Route::get('/editreservation/{id}','HotelController@edit_reservation')->name('Edit Room Reservation');
+Route::post('/updatereservation/{id}','HotelController@update_reservation');
+Route::get('/deletereservation/{id}','HotelController@delete_reservation');

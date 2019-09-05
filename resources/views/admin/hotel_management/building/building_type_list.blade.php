@@ -13,6 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                      <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                     <a href="{{URL::to('/hotel_management/building/addbuildingtype')}}" class="btn btn-primary">Add New Building Type</a>
                 </div>
 
@@ -24,6 +27,7 @@
                           Session::put('message',null);
                         }
                     @endphp
+                    
                 </p>
 
                 <table id="building_type" class="table table-bordered">

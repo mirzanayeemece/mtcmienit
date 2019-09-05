@@ -28,7 +28,6 @@
                           Session::put('message',null);
                         }
                     @endphp
-                        
                 </p>
 
                 <table id="venue" class="table table-bordered">

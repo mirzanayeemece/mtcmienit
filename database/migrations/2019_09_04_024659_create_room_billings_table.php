@@ -17,9 +17,10 @@ class CreateRoomBillingsTable extends Migration
             $table->increments('id');
             $table->integer('booking_id')->unsigned();
             $table->foreign('booking_id')
-                        ->references('id')->on('room_bookings')
-                        ->onUpdate('cascade')
-                        ->onDelete('restrict');
+                                ->references('id')
+                                ->on('room_bookings')
+                                ->onUpdate('cascade')
+                                ->onDelete('restrict');
             $table->string('advance_pay')->nullable();
             $table->string('total_pay')->nullable();
             $table->timestamps();

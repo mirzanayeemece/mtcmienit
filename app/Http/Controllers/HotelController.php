@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use PDF;
 use Auth;
 use Session;
+use Exception;
 Session_start();
 
 class HotelController extends Controller
@@ -115,11 +117,15 @@ class HotelController extends Controller
     //DELETE BUILDING FROM DATABASE
     public function delete_building($id)
     {
-        DB::table('buildings')
+        try {
+            DB::table('buildings')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Building has been deleted Successfully');
         return Redirect::to('/hotel_management/building/building_list');
+        } catch (Exception $e) {
+            return back()->withError('This Building cannot be deleted because other Floor/Floors depend on it. To delete this Building, delete dependent Floor/Floors first, only then you can delete it.');
+        }
     }
 
     //------- METHODS FOR BUILDING-TYPE --------//
@@ -187,11 +193,15 @@ class HotelController extends Controller
     //DELETE BUILDING-TYPE FROM DATABASE
     public function delete_building_type($id)
     {
-        DB::table('building_types')
+        try {
+            DB::table('building_types')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Building Type has been deleted Successfully');
         return Redirect::to('/hotel_management/building/building_type_list');
+        } catch (Exception $e) {
+            return back()->withError('This Building Type cannot be deleted because other Building/Buildings depend on it. To delete this Building Type, delete dependent Building/Buildings first, only then you can delete it.');
+        }
     }
 
 
@@ -300,11 +310,15 @@ class HotelController extends Controller
     //DELETE FLOOR FROM DATABASE
     public function delete_floor($id)
     {
-        DB::table('floors')
+        try {
+            DB::table('floors')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Floor has been deleted Successfully');
         return Redirect::to('/hotel_management/floor/floor_list');
+        } catch (Exception $e) {
+            return back()->withError('This Floor cannot be deleted because other Room/Rooms depend on it. To delete this Floor, delete dependent Room/Rooms first, only then you can delete it.');
+        }
     }
 
 
@@ -374,11 +388,15 @@ class HotelController extends Controller
     //DELETE FLOOR-TYPE FROM DATABASE
     public function delete_floor_type($id)
     {
-        DB::table('floor_types')
+        try {
+            DB::table('floor_types')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Floor Type has been deleted Successfully');
         return Redirect::to('/hotel_management/floor/floor_type_list');
+        } catch (Exception $e) {
+            return back()->withError('This Floor Type cannot be deleted because other Floor/Floors depend on it. To delete this Floor Type, delete dependent Floor/Floors first, only then you can delete it.');
+        }
     }
 
 
@@ -503,11 +521,15 @@ class HotelController extends Controller
     //DELETE ROOM FROM DATABASE
     public function delete_room($id)
     {
-        DB::table('rooms')
+        try {
+            DB::table('rooms')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Room has been deleted Successfully');
         return Redirect::to('/hotel_management/room/room_list');
+        } catch (Exception $e) {
+            return back()->withError('This Room cannot be deleted because other Reservation/Reservations depend on it. To delete this Room, delete dependent Reservation/Reservations first, only then you can delete it.');
+        }
     }
 
 
@@ -580,10 +602,134 @@ class HotelController extends Controller
     //DELETE ROOM-CATEGORY FROM DATABASE
     public function delete_room_category($id)
     {
-        DB::table('room_categories')
+        try {
+            DB::table('room_categories')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Room Category has been deleted Successfully');
         return Redirect::to('/hotel_management/room/room_category_list');
+        } catch (Exception $e) {
+            return back()->withError('This Room Category cannot be deleted because other Room/Rooms depend on it. To delete this Room Category, delete dependent Room/Rooms first, only then you can delete it.');
+        }
+    }
+
+
+
+    //------- METHODS FOR ROOM-RESERVATION --------//
+    //ROOM-RESERVATION
+    public function room_reservation(){
+        $room_reservation_info=DB::table('room_reservations')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $room_info=DB::table('rooms')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $manage_room_reservation=view('admin.hotel_management.reservation.room_reservation_list')
+                         ->with('room_reservation_info',$room_reservation_info)
+                         ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.reservation.room_reservation_list',$manage_room_reservation);
+    }
+    //ADD ROOM-RESERVATION
+    public function add_reservation(){
+
+        $room_info = DB::table('rooms')
+                            ->orderBy('id','desc')
+                            ->get();
+
+        $manage_reservation = view('admin.hotel_management.reservation.addreservation')
+                            ->with('room_info',$room_info);
+
+        return view('admin.master')
+                        ->with('admin.hotel_management.reservation.addreservation',$manage_reservation);
+    }
+    //SAVE ROOM-RESERVATION TO DATABASE
+    public function save_reservation(Request $request)
+    {
+        $this->validate($request, [
+          'guest_name'  => ['required', 'string', 'max:100','unique:room_reservations'],
+          'contact_no'  => ['required'],
+          'start_date'  => ['required','date'],
+           'end_date' => ['min:{{ start_date }}'],
+          'room_id' => ['required', 'integer'],
+          'status'  => ['required', 'max:5']
+        ]);
+        $data = array();
+        $data['guest_name'] = $request->guest_name;
+        $data['guest_contact'] = $request->contact_no;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['room_id'] = $request->room_id;
+        $data['status'] = $request->status;
+        $data['created_at'] = now();
+        
+
+        DB::table('room_reservations')->insert($data);
+        Session::put('message','Room Reservation is Added Successfully');
+        return Redirect::to('/hotel_management/reservation/addreservation');
+    }
+    //VIEW ROOM-RESERVATION
+    public function view_reservation($id){
+        $reservation=DB::table('room_reservations')
+                           ->where('id',$id)
+                           ->first();
+        $room_info=DB::table('rooms')
+                            
+                            ->get();
+        $manage_reservation_view=view('admin.hotel_management.reservation.viewreservation')
+                            ->with('reservation',$reservation)
+                            ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.reservation.viewreservation',$manage_reservation_view);
+    }
+    //EDIT ROOM-RESERVATION
+    public function edit_reservation($id)
+    {
+        $reservation_info=DB::table('room_reservations')
+                           ->where('id',$id)
+                           ->first();
+        $room_info=DB::table('rooms')
+                           ->get();
+        
+        $manage_reservation=view('admin.hotel_management.reservation.editreservation')
+                         ->with('reservation_info',$reservation_info)
+                         ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.reservation.editreservation',$manage_reservation);
+    }
+    //UPDATE ROOM-RESERVATION
+    public function update_reservation(Request $request, $id)
+    {
+        $this->validate($request, [
+          'guest_name'  => ['required', 'string', 'max:100','unique:room_reservations'],
+          'guest_contact'  => ['required'],
+          'start_date'  => ['required','date'],
+          // 'end_date' => ['date'],
+          'room_id' => ['required', 'integer'],
+          'status'  => ['required', 'max:5']
+        ]);
+
+        $data = array();
+        $data['guest_name'] = $request->guest_name;
+        $data['guest_contact'] = $request->guest_contact;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['room_id'] = $request->room_id;
+        $data['status'] = $request->status;
+
+        DB::table('room_reservations')
+                ->where('id',$id)
+                ->update($data);
+        Session::put('message','Room Reservation has been updated Successfully');
+        return Redirect::to('/hotel_management/reservation/room_reservation_list');
+    }
+    //DELETE ROOM-RESERVATION FROM DATABASE
+    public function delete_reservation($id)
+    {
+        DB::table('room_reservations')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Room Reservation has been deleted Successfully');
+        return Redirect::to('/hotel_management/reservation/room_reservation_list');
     }
 }
