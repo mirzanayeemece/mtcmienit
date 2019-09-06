@@ -847,4 +847,120 @@ class HotelController extends Controller
         Session::put('message', 'Room Booking has been deleted Successfully');
         return Redirect::to('/hotel_management/booking/booking_list');
     }
+    //MAKE ROOM-BOOKING
+    public function make_booking($id){
+        $reservation_info=DB::table('room_reservations')
+                           ->where('id',$id)
+                           ->first();
+        $room_info=DB::table('rooms')
+                            ->get();
+        $manage_make_booking=view('admin.hotel_management.booking.makebooking')
+                            ->with('reservation_info',$reservation_info)
+                            ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.booking.makebooking',$manage_make_booking);
+    }
+    //SAVE MAKE-BOOKING TO DATABASE
+    public function save_make_booking(Request $request)
+    {
+        $this->validate($request, [
+          'guest_name'  => ['required', 'string', 'max:100','unique:room_bookings'],
+          'contact_no'  => ['required'],
+          'start_date'  => ['required','date'],
+           'end_date' => ['min:{{ start_date }}'],
+          'room_id' => ['required', 'integer'],
+          'status'  => ['required', 'max:5']
+        ]);
+        $data = array();
+        $data['guest_name'] = $request->guest_name;
+        $data['guest_contact'] = $request->contact_no;
+        $data['start_date'] = $request->start_date;
+        $data['end_date'] = $request->end_date;
+        $data['room_id'] = $request->room_id;
+        $data['status'] = $request->status;
+        $data['created_at'] = now();
+
+        DB::table('room_bookings')->insert($data);
+        Session::put('message','Room Booking is Added Successfully');
+        return Redirect::to('/hotel_management/booking/booking_list');
+    }
+
+
+    //------- METHODS FOR ROOM-BILLING --------//
+    //ROOM-BILLING
+    public function room_billing(){
+        $room_billing=DB::table('room_billings')
+                            ->orderBy('id','desc')
+                            ->get();
+        $booking_info=DB::table('room_bookings')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $room_info=DB::table('rooms')
+                            ->get();
+        $manage_room_billing=view('admin.hotel_management.billing.billing_list')
+                            ->with('room_billing',$room_billing)
+                            ->with('booking_info',$booking_info)
+                            ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.billing.billing_list',$manage_room_billing);
+    }
+    //ADD ROOM-BILLING
+    public function make_billing($id){
+        $book_info = DB::table('room_bookings')
+                            ->where('id',$id)
+                            ->first();
+        $room_info = DB::table('rooms')
+                            ->orderBy('id','desc')
+                            ->get();
+
+        $manage_billing = view('admin.hotel_management.billing.makebilling')
+                            ->with('book_info',$book_info)
+                            ->with('room_info',$room_info);
+
+        return view('admin.master')
+                        ->with('admin.hotel_management.billing.makebilling',$manage_billing);
+    }
+    //SAVE ROOM-BILLING TO DATABASE
+    public function save_billing(Request $request)
+    {
+        $this->validate($request, [
+          'booking_id' => ['required', 'integer'],
+          'advance_pay'  => ['required', 'min:0'],
+          'total_pay'  => ['required', 'min:0']
+        ]);
+        $data = array();
+        $data['booking_id'] = $request->booking_id;
+        $data['advance_pay'] = $request->advance_pay;
+        $data['total_pay'] = $request->total_pay;
+        $data['created_at'] = now();
+
+        DB::table('room_billings')->insert($data);
+        Session::put('message','Room Booking is Added Successfully');
+        return Redirect::to('/hotel_management/billing/billing_list');
+    }
+    //VIEW ROOM-BILLING
+    public function view_billing($id){
+        $booking_info=DB::table('room_bookings')
+                            ->get();
+        $billing=DB::table('room_billings')
+                            ->where('id',$id)
+                            ->first();
+        $room_info=DB::table('rooms')
+                            ->get();
+        $manage_billing_view=view('admin.hotel_management.billing.viewbilling')
+                            ->with('booking_info',$booking_info)
+                            ->with('billing',$billing)
+                            ->with('room_info',$room_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.billing.viewbilling',$manage_billing_view);
+    }
+    //DELETE ROOM-BILLING FROM DATABASE
+    public function delete_billing($id)
+    {
+        DB::table('room_billings')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Room Billing has been deleted Successfully');
+        return Redirect::to('/hotel_management/billing/billing_list');
+    }
 }

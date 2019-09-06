@@ -26,7 +26,7 @@
                     @endphp
                 </p>
 
-                <table id="room_reservation" class="table table-bordered">
+                <table id="room_reservation" class="table table-bordered table-primary table-hover">
                     <thead>
                         <tr>
                             <th class="">#</th>
@@ -70,9 +70,10 @@
                                 @endif
                             </td>
                             <td width="15%" align="right">
-                              <a href="{{URL::to('viewreservation/'.$row->id)}}" class="" title="View"><img src="{{asset('img')}}/view.gif" alt="view" height="20px" width="20px"></a>
-                              <a href="{{URL::to('editreservation/'.$row->id)}}" class="" title="Edit"><img src="{{asset('img')}}/edit.gif" alt="edit" height="20px" width="20px"></a>
-                              <a href="{{URL::to('deletereservation/'.$row->id)}}" class="" title="Delete" id="delete"><img src="{{asset('img')}}/delete.gif" alt="delete" height="20px" width="20px"></a>
+                              <a href="{{URL::to('makebooking/'.$row->id)}}" class="" title="Book"><img src="{{asset('img')}}/book.png" alt="view" height="20px" width="20px"></a>
+                              <a href="{{URL::to('viewreservation/'.$row->id)}}" class="" title="View"><img src="{{asset('img')}}/view.png" alt="view" height="20px" width="20px"></a>
+                              <a href="{{URL::to('editreservation/'.$row->id)}}" class="" title="Edit"><img src="{{asset('img')}}/edit.png" alt="edit" height="20px" width="20px"></a>
+                              <a href="{{URL::to('deletereservation/'.$row->id)}}" class="" title="Delete" id="delete"><img src="{{asset('img')}}/delete.png" alt="delete" height="20px" width="20px"></a>
                             </td>
                         </tr>
                       @endforeach

@@ -43,7 +43,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="adaptive">
                   @foreach($rooms_info as $row) 
                     <tr>
                         <td width="5%">{{$row->id}}</td>

@@ -35,6 +35,15 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+/* #room td {
+  background-color: #0099ff;
+} */
+
+/* #room .adaptive {
+  background-color: #0099ff;
+  background-color:lightblue;
+} */
+
 *,
 *::before,
 *::after {

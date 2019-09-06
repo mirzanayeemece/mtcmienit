@@ -60,11 +60,11 @@
             <th>Status</th>
             <td>
                 @if($booking->status == '1')
-                  {{Config::get('constants.roomResStatus.1')}}
+                  {{Config::get('constants.roomBookStatus.1')}}
                 @elseif($booking->status == '2')
-                  {{Config::get('constants.roomResStatus.2')}}
+                  {{Config::get('constants.roomBookStatus.2')}}
                 @elseif($booking->status == '3')
-                  {{Config::get('constants.roomResStatus.3')}}
+                  {{Config::get('constants.roomBookStatus.3')}}
                 @endif
             </td>
         </tr>   

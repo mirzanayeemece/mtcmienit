@@ -11,6 +11,9 @@
     <!-- Bootstrap -->
     <link href="{{asset('bs4')}}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('bs4')}}/css/font-awesome.min.css" rel="stylesheet">
+    <!-- FROM HERE added by FARHAN for testing -->
+    <link href="{{asset('bs4')}}/css/bootstrap.css" rel="stylesheet">
+    <!-- added by FARHAN for testing TO HERE -->
    </head>
 
    <body>
@@ -26,6 +29,7 @@
     <!-- jQuery -->
     <script src="{{asset('bs4')}}/js/jquery.js"></script>
     <script src="{{asset('bs4')}}/js/bootstrap.min.js"></script>
+    <script src="{{asset('bs4')}}/js/bootstrap.js"></script>
 
     @yield('datatable')
     <!-- bootbox -->   

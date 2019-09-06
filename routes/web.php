@@ -116,12 +116,21 @@ Route::get('/viewreservation/{id}','HotelController@view_reservation')->name('Vi
 Route::get('/editreservation/{id}','HotelController@edit_reservation')->name('Edit Room Reservation');
 Route::post('/updatereservation/{id}','HotelController@update_reservation');
 Route::get('/deletereservation/{id}','HotelController@delete_reservation');
+Route::get('/makebooking/{id}','HotelController@make_booking');
+Route::post('/savemakebooking','HotelController@save_make_booking');
 
 //BOOKING
 Route::get('/hotel_management/booking/booking_list', 'HotelController@room_booking')->name('Room Bookings');
 Route::get('/hotel_management/booking/addbooking', 'HotelController@add_booking')->name('Add Room Booking');
 Route::post('/savebooking','HotelController@save_booking');
+Route::get('/makebilling/{id}', 'HotelController@make_billing')->name('Make Room Bill');
 Route::get('/viewbooking/{id}','HotelController@view_booking')->name('View Room Booking');
 Route::get('/editbooking/{id}','HotelController@edit_booking')->name('Edit Room Booking');
 Route::post('/updatebooking/{id}','HotelController@update_booking');
 Route::get('/deletebooking/{id}','HotelController@delete_booking');
+
+//BILLING
+Route::get('/hotel_management/billing/billing_list', 'HotelController@room_billing')->name('Room Billings');
+Route::post('/savebilling','HotelController@save_billing');
+Route::get('/viewbilling/{id}','HotelController@view_billing')->name('View Room Billing');
+Route::get('/deletebilling/{id}','HotelController@delete_billing');

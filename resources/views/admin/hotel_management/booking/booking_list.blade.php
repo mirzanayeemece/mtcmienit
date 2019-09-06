@@ -70,9 +70,10 @@
                                 @endif
                             </td>
                             <td width="15%" align="right">
-                              <a href="{{URL::to('viewbooking/'.$row->id)}}" class="" title="View"><img src="{{asset('img')}}/view.gif" alt="view" height="20px" width="20px"></a>
-                              <a href="{{URL::to('editbooking/'.$row->id)}}" class="" title="Edit"><img src="{{asset('img')}}/edit.gif" alt="edit" height="20px" width="20px"></a>
-                              <a href="{{URL::to('deletebooking/'.$row->id)}}" class="" title="Delete" id="delete"><img src="{{asset('img')}}/delete.gif" alt="delete" height="20px" width="20px"></a>
+                                <a href="{{URL::to('makebilling/'.$row->id)}}" class="" title="Bill" id="bill"><img src="{{asset('img')}}/book.png" alt="bill" height="20px" width="20px"></a>
+                                <a href="{{URL::to('viewbooking/'.$row->id)}}" class="" title="View"><img src="{{asset('img')}}/view.png" alt="view" height="20px" width="20px"></a>
+                                <a href="{{URL::to('editbooking/'.$row->id)}}" class="" title="Edit"><img src="{{asset('img')}}/edit.png" alt="edit" height="20px" width="20px"></a>
+                                <a href="{{URL::to('deletebooking/'.$row->id)}}" class="" title="Delete" id="delete"><img src="{{asset('img')}}/delete.png" alt="delete" height="20px" width="20px"></a>
                             </td>
                         </tr>
                       @endforeach
