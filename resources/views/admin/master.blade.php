@@ -13,6 +13,7 @@
     <link href="{{asset('bs4')}}/css/font-awesome.min.css" rel="stylesheet">
     <!-- FROM HERE added by FARHAN for testing -->
     <link href="{{asset('bs4')}}/css/bootstrap.css" rel="stylesheet">
+    <link href="{{asset('admin')}}/css/customnav.css" rel="stylesheet">
     <!-- added by FARHAN for testing TO HERE -->
    </head>
 
@@ -53,6 +54,15 @@
           $('.datepicker').datepicker({
             format: 'yyyy-mm-dd'
           });
+        });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('.navbar-dark .dmenu').hover(function () {
+                $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+            }, function () {
+                $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
+            });
         });
     </script>
 
