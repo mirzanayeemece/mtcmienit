@@ -23,11 +23,11 @@
             <h5 style="text-align: center; color: white; "><?php //echo $pr_name; ?>Microfinance for better Future</h5>
             <h6 style="text-align: center; color: white; "><?php //echo $org_address; ?>House:193(1st Floor), Road:1, New DOHS, Mohakhali, Dhaka-1206</h6>
            </div>
-          <div class="col-md-2 col-xs-3" style="padding-right: 0; text-align: right; padding-top: 2px; ">
+          <div class="col-md-2 col-xs-3" style="padding-right: 8px; text-align: right; padding-top: 2px; ">
             {{-- <a href="../include/logout.php" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>Log out</a> --}}
 	          <a class="btn btn-primary" href="{{ route('logout') }}"
 	            onclick="event.preventDefault();
-	            document.getElementById('logout-form').submit();">
+	            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
 	            {{ __('Logout') }}
 		      </a>
 		      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
