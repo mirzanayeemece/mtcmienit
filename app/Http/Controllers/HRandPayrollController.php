@@ -376,41 +376,188 @@ class HRandPayrollController extends Controller
     //EDIT LEAVE-CATEGORY
     public function edit_leave_category($id)
     {
-        $department=DB::table('departments')
+        $leave_category=DB::table('leave_categories')
                            ->where('id',$id)
                            ->first();
-        $manage_department=view('admin.hr_payroll.department.edit_department')
-                         ->with('department',$department);
+        $manage_leave_category=view('admin.hr_payroll.leave.edit_leave_category')
+                         ->with('leave_category',$leave_category);
         return view('admin.master')
-                         ->with('admin.hr_payroll.department.edit_department',$manage_department);
+                         ->with('admin.hr_payroll.leave.edit_leave_category',$manage_leave_category);
     }
     //UPDATE LEAVE-CATEGORY
     public function update_leave_category(Request $request, $id)
     {
         $this->validate($request, [
           'name'  => ['required', 'string', 'max:100'],
-          'description'  => ['max:255']
+          'details'  => ['max:255']
         ]);
 
         $data = array();
         $data['name'] = $request->name;
-        $data['description'] = $request->description;
+        $data['details'] = $request->details;
 
-        DB::table('departments')
+        DB::table('leave_categories')
              ->where('id',$id)
              ->update($data);
-        Session::put('message','Department has been updated Successfully');
-        return Redirect::to('/hr_payroll/department/departments');
+        Session::put('message','Leave Category has been updated Successfully');
+        return Redirect::to('/hr_payroll/leave/leave_categories');
     }
     //DELETE LEAVE-CATEGORY FROM DATABASE
     public function delete_leave_category($id)
     {
-        DB::table('departments')
+        DB::table('leave_categories')
                 ->where('id',$id)
                 ->delete();
-        Session::put('message', 'Department has been deleted Successfully');
-        return Redirect::to('/hr_payroll/department/departments');
+        Session::put('message', 'Leave Category has been deleted Successfully');
+        return Redirect::to('/hr_payroll/leave/leave_categories');
     }
 
 
+    //------- METHODS FOR EMPLOYEE --------//
+    //EMPLOYEE
+    public function employee(){
+        $employees_info=DB::table('employees')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $department_info=DB::table('departments')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $employee_designation_info=DB::table('employee_designations')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $salary_grade_info=DB::table('salary_grades')
+                           ->orderBy('id', 'desc')
+                           ->get();
+
+        $manage_employees=view('admin.hr_payroll.employee.employees')
+                         ->with('employees_info',$employees_info)
+                         ->with('department_info',$department_info)
+                         ->with('employee_designation_info',$employee_designation_info)
+                         ->with('salary_grade_info',$salary_grade_info);
+        return view('admin.master')
+                         ->with('admin.hr_payroll.employee.employees',$manage_employees);
+    }
+    //ADD EMPLOYEE
+    public function add_employee(){
+
+        $department_info=DB::table('departments')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $employee_designation_info=DB::table('employee_designations')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $salary_grade_info=DB::table('salary_grades')
+                           ->orderBy('id', 'desc')
+                           ->get();
+
+        $manage_employee = view('admin.hr_payroll.employee.add_employee')
+                            ->with('department_info',$department_info)
+                            ->with('employee_designation_info',$employee_designation_info)
+                            ->with('salary_grade_info',$salary_grade_info);
+
+        return view('admin.master')
+                        ->with('admin.hr_payroll.employee.add_employee',$manage_employee);
+    }
+    //SAVE EMPLOYEE TO DATABASE
+    public function save_employee(Request $request)
+    {
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:50', 'unique:employees'],
+          'date_of_birth' => ['required','date'],
+          'phone' => ['required','string', 'max:15', 'unique:employees'],
+          'address' => ['required','string', 'max:100'],
+          'blood_group' => ['required','string', 'max:15'],
+          'department_id' => ['required','integer'],
+          'designation_id' => ['required','integer'],
+          'salary_grade_id' => ['required','integer'],
+          'emergency_contact' => ['required','string', 'max:15'],
+          'other'  => ['max:255']
+        ]);
+        $data = array();
+        $data['name'] = $request->name;
+        $data['date_of_birth'] = $request->date_of_birth;
+        $data['phone'] = $request->phone;
+        $data['address'] = $request->address;
+        $data['blood_group'] = $request->blood_group;
+        $data['department_id'] = $request->department_id;
+        $data['designation_id'] = $request->designation_id;
+        $data['salary_grade_id'] = $request->salary_grade_id;
+        $data['emergency_contact'] = $request->emergency_contact;
+        $data['other'] = $request->other;
+        $data['created_at'] = now();
+        
+
+        DB::table('employees')->insert($data);
+        Session::put('message','Employee is Added Successfully');
+        return Redirect::to('/hr_payroll/employee/add_employee');
+    }
+    //EDIT EMPLOYEE
+    public function edit_employee($id)
+    {
+        $employee=DB::table('employees')
+                           ->where('id',$id)
+                           ->first();
+        $department_info=DB::table('departments')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $employee_designation_info=DB::table('employee_designations')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $salary_grade_info=DB::table('salary_grades')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        
+        $manage_employee=view('admin.hr_payroll.employee.edit_employee')
+                         ->with('employee',$employee)
+                         ->with('department_info',$department_info)
+                         ->with('employee_designation_info',$employee_designation_info)
+                         ->with('salary_grade_info',$salary_grade_info);
+
+        return view('admin.master')
+                         ->with('admin.hr_payroll.employee.edit_employee',$manage_employee);
+    }
+    //UPDATE EMPLOYEE
+    public function update_employee(Request $request, $id)
+    {
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:50'],
+          'date_of_birth' => ['required','date'],
+          'phone' => ['required','string', 'max:15'],
+          'address' => ['required','string', 'max:100'],
+          'blood_group' => ['required','string', 'max:15'],
+          'department_id' => ['required','integer'],
+          'designation_id' => ['required','integer'],
+          'salary_grade_id' => ['required','integer'],
+          'emergency_contact' => ['required','string', 'max:15'],
+          'other'  => ['max:255']
+        ]);
+
+        $data = array();
+        $data['name'] = $request->name;
+        $data['date_of_birth'] = $request->date_of_birth;
+        $data['phone'] = $request->phone;
+        $data['address'] = $request->address;
+        $data['blood_group'] = $request->blood_group;
+        $data['department_id'] = $request->department_id;
+        $data['designation_id'] = $request->designation_id;
+        $data['salary_grade_id'] = $request->salary_grade_id;
+        $data['emergency_contact'] = $request->emergency_contact;
+        $data['other'] = $request->other;
+        $data['created_at'] = now();
+
+        DB::table('employees')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','Employee has been updated Successfully');
+        return Redirect::to('/hr_payroll/employee/employees');
+    }
+    //DELETE EMPLOYEE FROM DATABASE
+    public function delete_employee($id)
+    {
+        DB::table('employees')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Employee has been deleted Successfully');
+        return Redirect::to('/hr_payroll/employee/employees');
+    }
 }

@@ -80,7 +80,6 @@ Route::get('/editbuildingtype/{id}','HotelController@edit_building_type')->name(
 Route::post('/updatebuildingtype/{id}','HotelController@update_building_type');
 Route::get('/deletebuildingtype/{id}','HotelController@delete_building_type');
 
-
 //FLOOR
 Route::get('/hotel_management/floor/floor_list', 'HotelController@floor')->name('Floors');
 Route::get('/hotel_management/floor/addfloor', 'HotelController@add_floor')->name('Add Floor');
@@ -178,5 +177,13 @@ Route::get('/delete_leave/{id}','HRandPayrollController@delete_leave');
 Route::get('/edit_leave_category/{id}','HRandPayrollController@edit_leave_category')->name('Edit Leave Category');
 Route::post('/update_leave_category/{id}','HRandPayrollController@update_leave_category');
 Route::get('/delete_leave_category/{id}','HRandPayrollController@delete_leave_category');
+
+//EMPLOYEE
+Route::get('/hr_payroll/employee/employees', 'HRandPayrollController@employee')->name('Employees');
+Route::get('/hr_payroll/employee/add_employee', 'HRandPayrollController@add_employee')->name('Add Employee');
+Route::post('/save_employee','HRandPayrollController@save_employee');
+Route::get('/edit_employee/{id}','HRandPayrollController@edit_employee')->name('Edit Employee');
+Route::post('/update_employee/{id}','HRandPayrollController@update_employee');
+Route::get('/delete_employee/{id}','HRandPayrollController@delete_employee');
 
 //------HR-AND-PAYROLL END-------//

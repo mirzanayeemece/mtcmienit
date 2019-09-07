@@ -53,14 +53,15 @@
         HR & Payroll
       </a>
       <div class="dropdown-menu sm-menu">
-        <a class="dropdown-item" href="">Department</a>
-        <a class="dropdown-item" href="">Employee Designation</a>
-        <a class="dropdown-item" href="">Employee</a>
-        <a class="dropdown-item" href="">Leave</a>
-        <a class="dropdown-item" href="">Increment</a>
-        <a class="dropdown-item" href="">Salary Grade</a>
-        <a class="dropdown-item" href="">Salary Payment</a>
-        <a class="dropdown-item" href="">Salary history</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/department/departments')}}">Department</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/employee_designation/employee_designations')}}">Employee Designation</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/employee/employees')}}">Employee</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/leave/leaves')}}">Leave</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/leave/leave_categories')}}">Leave Category</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/increment/increments')}}">Increment</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/salary_grade/salary_grades')}}">Salary Grade</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/salary_payment/salary_payments')}}">Salary Payment</a>
+          <a class="dropdown-item" href="{{URL::to('/hr_payroll/salary_history/salary_histories')}}">Salary history</a>
       </div>
     </li>
     <li class="nav-item dropdown dmenu">
