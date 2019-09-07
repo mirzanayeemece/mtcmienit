@@ -70,3 +70,5 @@
 
 </body>
 </html>
+
+@yield('customscript')

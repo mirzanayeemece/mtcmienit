@@ -31,6 +31,7 @@ Route::post('/update_venue/{id}','HomeController@update_venue');
 //venue reservation
 Route::get('/training/venueRes', 'HomeController@venueRes')->name('venueRes');
 Route::get('/training/addvenueRes', 'HomeController@addvenueRes')->name('addvenueRes');
+Route::get('dynamic_dependent/fetch', 'HomeController@fetch')->name('dynamicdependent.fetch');
 Route::post('/savevenueRes','HomeController@savevenueRes');
 Route::get('/delete_venueres/{id}','HomeController@delete_venueres');
 Route::get('/edit_venueres/{id}','HomeController@edit_venueres')->name('edit_venueres');

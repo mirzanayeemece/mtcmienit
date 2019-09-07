@@ -133,6 +133,24 @@ class HomeController extends Controller
         return view('admin.master')
                          ->with('admin.training.addvenueRes',$manage_venue);
     }
+    //FETCH VENUE PRICE 
+    function fetch(Request $request)
+        {
+         $select = $request->get('select');
+         $value = $request->get('value');
+         $dependent = $request->get('dependent');
+         $data = DB::table('venues')
+           //->select('price')
+           ->where('id', $value)
+           ->get();
+         foreach($data as $row)
+         {
+            // $output = '<p>'.$row->price.'</p>';
+            $output = $row->price;
+         }
+         //$output = $data;
+         echo $output;
+        }
     //ADD VENUE RESERVATION IN DATABASE
     public function savevenueRes(Request $request)
     {
