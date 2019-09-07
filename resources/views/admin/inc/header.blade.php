@@ -19,9 +19,9 @@
 
            </div>
            <div class="col-md-8 col-xs-6">
-            <h3 style="text-align: center; color: white; ">ASPADA Paribesh Unnayan Foundation</h3>
-            <h4 style="text-align: center; color: white; "><?php //echo $pr_name; ?>Microfinance for better Future</h4>
-            <h5 style="text-align: center; color: white; "><?php //echo $org_address; ?>House:193(1st Floor), Road:1, New DOHS, Mohakhali, Dhaka-1206</h5>
+            <h4 style="text-align: center; color: white; ">ASPADA Paribesh Unnayan Foundation</h4>
+            <h5 style="text-align: center; color: white; "><?php //echo $pr_name; ?>Microfinance for better Future</h5>
+            <h6 style="text-align: center; color: white; "><?php //echo $org_address; ?>House:193(1st Floor), Road:1, New DOHS, Mohakhali, Dhaka-1206</h6>
            </div>
           <div class="col-md-2 col-xs-3" style="padding-right: 0; text-align: right; padding-top: 2px; ">
             {{-- <a href="../include/logout.php" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span>Log out</a> --}}
