@@ -158,6 +158,7 @@ $(document).ready(function(){
     {
      $('#'+dependent).html(result);
      //$('#actual_price').html(result);
+     
     }
 
    })
