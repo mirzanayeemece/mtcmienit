@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLeaveCategoryTable extends Migration
+class CreateLeaveCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLeaveCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('leave_category', function (Blueprint $table) {
+        Schema::create('leave_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('details');
@@ -28,6 +28,6 @@ class CreateLeaveCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_category');
+        Schema::dropIfExists('leave_categories');
     }
 }

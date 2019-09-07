@@ -16,7 +16,7 @@ class CreateEmployeeDesignationsTable extends Migration
         Schema::create('employee_designations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',100);
-            $table->string('details',255);
+            $table->string('description',255);
             $table->timestamps();
         });
     }
