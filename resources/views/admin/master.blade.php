@@ -21,6 +21,7 @@
     <div id="app">
 
       @include('admin.inc.header')
+      @include('admin.inc.navbar')
 
         <main class="py-4">
             @yield('content')
