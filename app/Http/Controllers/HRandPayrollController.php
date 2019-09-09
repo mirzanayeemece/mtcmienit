@@ -271,75 +271,75 @@ class HRandPayrollController extends Controller
     }
 
 
-//------- METHODS FOR LEAVE --------//
-    //LEAVE
-    public function leave(){
-        $department_info=DB::table('departments')
-                           ->orderBy('id', 'desc')
-                           ->get();
-        $manage_departments=view('admin.hr_payroll.department.departments')
-                         ->with('department_info',$department_info);
-        return view('admin.master')
-                         ->with('admin.hr_payroll.department.departments',$manage_departments);
-    }
-    //ADD-LEAVE
-    public function add_leave(){
-        return view('admin.hr_payroll.department.add_department');
-    }
-    //SAVE LEAVE TO DATABASE
-    public function save_leave(Request $request)
-    {
-        $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100','unique:departments'],
-          'description'  => ['max:255']
-        ]);
-        $data = array();
-        $data['name'] = $request->name;
-        $data['description'] = $request->description;
-        $data['created_at'] = now();
+// //------- METHODS FOR LEAVE --------//
+//     //LEAVE
+//     public function leave(){
+//         $department_info=DB::table('departments')
+//                            ->orderBy('id', 'desc')
+//                            ->get();
+//         $manage_departments=view('admin.hr_payroll.department.departments')
+//                          ->with('department_info',$department_info);
+//         return view('admin.master')
+//                          ->with('admin.hr_payroll.department.departments',$manage_departments);
+//     }
+//     //ADD-LEAVE
+//     public function add_leave(){
+//         return view('admin.hr_payroll.department.add_department');
+//     }
+//     //SAVE LEAVE TO DATABASE
+//     public function save_leave(Request $request)
+//     {
+//         $this->validate($request, [
+//           'name'  => ['required', 'string', 'max:100','unique:departments'],
+//           'description'  => ['max:255']
+//         ]);
+//         $data = array();
+//         $data['name'] = $request->name;
+//         $data['description'] = $request->description;
+//         $data['created_at'] = now();
         
-        DB::table('departments')->insert($data);
-        Session::put('message','Department is Added Successfully');
-        return Redirect::to('/hr_payroll/department/add_department');
-    }
-    //EDIT LEAVE
-    public function edit_leave($id)
-    {
-        $department=DB::table('departments')
-                           ->where('id',$id)
-                           ->first();
-        $manage_department=view('admin.hr_payroll.department.edit_department')
-                         ->with('department',$department);
-        return view('admin.master')
-                         ->with('admin.hr_payroll.department.edit_department',$manage_department);
-    }
-    //UPDATE LEAVE
-    public function update_leave(Request $request, $id)
-    {
-        $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100'],
-          'description'  => ['max:255']
-        ]);
+//         DB::table('departments')->insert($data);
+//         Session::put('message','Department is Added Successfully');
+//         return Redirect::to('/hr_payroll/department/add_department');
+//     }
+//     //EDIT LEAVE
+//     public function edit_leave($id)
+//     {
+//         $department=DB::table('departments')
+//                            ->where('id',$id)
+//                            ->first();
+//         $manage_department=view('admin.hr_payroll.department.edit_department')
+//                          ->with('department',$department);
+//         return view('admin.master')
+//                          ->with('admin.hr_payroll.department.edit_department',$manage_department);
+//     }
+//     //UPDATE LEAVE
+//     public function update_leave(Request $request, $id)
+//     {
+//         $this->validate($request, [
+//           'name'  => ['required', 'string', 'max:100'],
+//           'description'  => ['max:255']
+//         ]);
 
-        $data = array();
-        $data['name'] = $request->name;
-        $data['description'] = $request->description;
+//         $data = array();
+//         $data['name'] = $request->name;
+//         $data['description'] = $request->description;
 
-        DB::table('departments')
-             ->where('id',$id)
-             ->update($data);
-        Session::put('message','Department has been updated Successfully');
-        return Redirect::to('/hr_payroll/department/departments');
-    }
-    //DELETE LEAVE FROM DATABASE
-    public function delete_leave($id)
-    {
-        DB::table('departments')
-                ->where('id',$id)
-                ->delete();
-        Session::put('message', 'Department has been deleted Successfully');
-        return Redirect::to('/hr_payroll/department/departments');
-    }
+//         DB::table('departments')
+//              ->where('id',$id)
+//              ->update($data);
+//         Session::put('message','Department has been updated Successfully');
+//         return Redirect::to('/hr_payroll/department/departments');
+//     }
+//     //DELETE LEAVE FROM DATABASE
+//     public function delete_leave($id)
+//     {
+//         DB::table('departments')
+//                 ->where('id',$id)
+//                 ->delete();
+//         Session::put('message', 'Department has been deleted Successfully');
+//         return Redirect::to('/hr_payroll/department/departments');
+//     }
 
 
     //------- METHODS FOR LEAVE-CATEGORY --------//

@@ -69,12 +69,15 @@
         Restaurant
       </a>
       <div class="dropdown-menu sm-menu">
-        <a class="dropdown-item" href="">Suppliers</a>
-        <a class="dropdown-item" href="">Receivers</a>
-        <a class="dropdown-item" href="">Grossery Category</a>
-        <a class="dropdown-item" href="">Grossery List</a>
-        <a class="dropdown-item" href="">Purchase</a>
-        <a class="dropdown-item" href="">Meal</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/supplier/suppliers')}}">Suppliers</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/receiver/receivers')}}">Receivers</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/grocery_category/grocery_categories')}}">Grocery Category</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/grocery/groceries')}}">Grocery List</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/purchase/purchases')}}">Purchases</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/meal_item/meal_items')}}">Meal Items</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/meal_item_type/meal_item_types')}}">Meal Types</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/menu/menus')}}">Menus</a>
+        <a class="dropdown-item" href="{{URL::to('/restaurant/menu_type/menu_types')}}">Menu Types</a>
       </div>
     </li>
     <li class="nav-item dropdown dmenu">

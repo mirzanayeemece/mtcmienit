@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLeaveCategoriesTable extends Migration
+class CreateSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateLeaveCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('leave_categories', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('details');
+            $table->string('name',100);
+            $table->string('phone_no',15);
+            $table->string('address',255);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateLeaveCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_categories');
+        Schema::dropIfExists('suppliers');
     }
 }
