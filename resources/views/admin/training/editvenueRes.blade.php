@@ -80,7 +80,7 @@
       <div class="form-group row">
         <label for="venue_id" class="col-md-4 col-form-label text-md-left">Venue:</label>
         <div class="col-md-6">
-        <select id="venue_id" name="venue_id" class="form-control" required>
+        <select id="venue_id" name="venue_id" class="form-control dynamic" data-dependent="actual_price" required>
           <option value>--Choose One--</option>
           @foreach($allvenueinfo as $row)
             <option value="{{ $row->id }}"
@@ -96,7 +96,14 @@
       <div class="form-group row">
         <label for="actual_price" class="col-md-4 col-form-label text-md-left">Actual Price:</label>
         <div class="col-md-6">
-        <input type="text" class="form-control" readonly>
+          @foreach($allvenueinfo as $row)
+            @if($row->id == $allvenueresinfo->venue_id)
+              @php
+               $actual_price = $row->price;
+               echo '<input type="text" name="actual_price" value="'.$actual_price.'" id="actual_price" class="form-control" readonly>';
+               @endphp
+            @endif
+          @endforeach
       </div>
       </div>
 
@@ -151,4 +158,38 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('customscript')
+<script>
+$(document).ready(function(){
+
+ $('.dynamic').change(function(){
+  if($(this).val() != '')
+  {
+   var select = $(this).attr("id");
+   var value = $(this).val();
+   var dependent = $(this).data('dependent');
+   var _token = $('input[name="_token"]').val();
+   $.ajax({
+    url:"{{ route('dynamicdependent.fetch') }}",
+    method:"GET",
+    data:{select:select, value:value, _token:_token, dependent:dependent},
+    success:function(result)
+    {
+     $('#'+dependent).val(result);     
+    }
+
+   })
+  }
+ });
+
+
+ $('#venue_id').change(function(){
+  $('#actual_price').val('');
+ });
+ 
+
+});
+</script>
 @endsection
