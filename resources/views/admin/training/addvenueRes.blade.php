@@ -156,9 +156,7 @@ $(document).ready(function(){
     data:{select:select, value:value, _token:_token, dependent:dependent},
     success:function(result)
     {
-     $('#'+dependent).html(result);
-     //$('#actual_price').html(result);
-     
+     $('#'+dependent).val(result);     
     }
 
    })
