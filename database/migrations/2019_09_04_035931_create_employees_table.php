@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->date('date_of_birth');
             $table->string('phone',15);
             $table->string('address');
-            $table->string('blood_group',10);
+            $table->string('blood_group',10)->nullable();
             $table->integer('designation_id')->unsigned();
             $table->foreign('designation_id')
                                 ->references('id')
@@ -39,7 +39,7 @@ class CreateEmployeesTable extends Migration
                                 ->onUpdate('cascade')
                                 ->onDelete('restrict');
             $table->string('emergency_contact',15);
-            $table->string('other');
+            $table->string('other')->nullable();
             $table->timestamps();
         });
     }

@@ -571,4 +571,131 @@ class RestaurantController extends Controller
         return view('admin.master')
                          ->with('admin.restaurant.menu.menus',$manage_menus);
     }
+    //ADD MENU
+    public function add_menu(){
+
+        $menu_type_info = DB::table('menu_types')
+                            ->orderBy('id','desc')
+                            ->get();
+        $meal_item_info = DB::table('meal_items')
+                            ->orderBy('id','desc')
+                            ->get();
+
+        $manage_menu = view('admin.restaurant.menu.add_menu')
+                            ->with('menu_type_info',$menu_type_info)
+                            ->with('meal_item_info',$meal_item_info);
+
+        return view('admin.master')
+                        ->with('admin.restaurant.menu.add_menu',$manage_menu);
+    }
+    //SAVE MENU TO DATABASE
+    public function save_menu(Request $request)
+    {
+        $this->validate($request, [
+          'name'          => ['required', 'string', 'max:100','unique:menus'],
+          'price'         => ['required', 'integer', 'min:0'],
+          'menu_type_id'  => ['required', 'integer', 'min:0'],
+          'description'   => ['max:255']
+        ]);
+        $data = array();
+        $data['name'] = $request->name;
+        $data['price'] = $request->price;
+        $data['menu_type_id'] = $request->menu_type_id;
+        $data['item_1_id'] = $request->item_1_id;
+        $data['item_1_quantity'] = $request->item_1_quantity;
+        $data['item_2_id'] = $request->item_2_id;
+        $data['item_2_quantity'] = $request->item_2_quantity;
+        $data['item_3_id'] = $request->item_3_id;
+        $data['item_3_quantity'] = $request->item_3_quantity;
+        $data['item_4_id'] = $request->item_4_id;
+        $data['item_4_quantity'] = $request->item_4_quantity;
+        $data['item_5_id'] = $request->item_5_id;
+        $data['item_5_quantity'] = $request->item_5_quantity;
+        $data['item_6_id'] = $request->item_6_id;
+        $data['item_6_quantity'] = $request->item_6_quantity;
+        $data['item_7_id'] = $request->item_7_id;
+        $data['item_7_quantity'] = $request->item_7_quantity;
+        $data['item_8_id'] = $request->item_8_id;
+        $data['item_8_quantity'] = $request->item_8_quantity;
+        $data['item_9_id'] = $request->item_9_id;
+        $data['item_9_quantity'] = $request->item_9_quantity;
+        $data['item_10_id'] = $request->item_10_id;
+        $data['item_10_quantity'] = $request->item_10_quantity;
+        $data['description'] = $request->description;
+        $data['created_at'] = now();
+        
+
+        DB::table('menus')->insert($data);
+        Session::put('message','Menu is Added Successfully');
+        return Redirect::to('/restaurant/menu/add_menu');
+    }
+    //EDIT MENU
+    public function edit_menu($id)
+    {
+        $menu=DB::table('menus')
+                           ->where('id',$id)
+                           ->first();
+        $menu_type_info=DB::table('menu_types')
+                           ->get();
+        $item_info=DB::table('meal_items')
+                           ->get();
+        
+        $manage_menu=view('admin.restaurant.menu.edit_menu')
+                         ->with('menu',$menu)
+                         ->with('menu_type_info',$menu_type_info)
+                         ->with('item_info',$item_info);
+        return view('admin.master')
+                         ->with('admin.restaurant.menu.edit_menu',$manage_menu);
+    }
+    //UPDATE MENU
+    public function update_menu(Request $request, $id)
+    {
+        $this->validate($request, [
+          'name'          => ['required', 'string', 'max:100'],
+          'price'         => ['required', 'integer', 'min:0'],
+          'menu_type_id'  => ['required', 'integer', 'min:0'],
+          'description'   => ['max:255']
+        ]);
+
+        $data = array();
+        $data['name'] = $request->name;
+        $data['price'] = $request->price;
+        $data['menu_type_id'] = $request->menu_type_id;
+        $data['item_1_id'] = $request->item_1_id;
+        $data['item_1_quantity'] = $request->item_1_quantity;
+        $data['item_2_id'] = $request->item_2_id;
+        $data['item_2_quantity'] = $request->item_2_quantity;
+        $data['item_3_id'] = $request->item_3_id;
+        $data['item_3_quantity'] = $request->item_3_quantity;
+        $data['item_4_id'] = $request->item_4_id;
+        $data['item_4_quantity'] = $request->item_4_quantity;
+        $data['item_5_id'] = $request->item_5_id;
+        $data['item_5_quantity'] = $request->item_5_quantity;
+        $data['item_6_id'] = $request->item_6_id;
+        $data['item_6_quantity'] = $request->item_6_quantity;
+        $data['item_7_id'] = $request->item_7_id;
+        $data['item_7_quantity'] = $request->item_7_quantity;
+        $data['item_8_id'] = $request->item_8_id;
+        $data['item_8_quantity'] = $request->item_8_quantity;
+        $data['item_9_id'] = $request->item_9_id;
+        $data['item_9_quantity'] = $request->item_9_quantity;
+        $data['item_10_id'] = $request->item_10_id;
+        $data['item_10_quantity'] = $request->item_10_quantity;
+        $data['description'] = $request->description;
+
+        DB::table('menus')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','Menu has been updated Successfully');
+        return Redirect::to('/restaurant/menu/menus');
+    }
+    //DELETE MENU FROM DATABASE
+    public function delete_menu($id)
+    {
+        DB::table('menus')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Menu has been deleted Successfully');
+        return Redirect::to('/restaurant/menu/menus');
+    }
 }
