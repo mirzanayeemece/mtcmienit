@@ -33,11 +33,18 @@
     <script src="{{asset('bs4')}}/js/jquery.js"></script>
     <script src="{{asset('bs4')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('bs4')}}/js/bootstrap.js"></script>
+    <!-- added by FARHAN from HERE -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- added by FARHAN to HERE -->
 
     @yield('datatable')
     <!-- bootbox -->   
     <script type="text/javascript" src="{{asset('admin')}}/dist/js/bootbox.min.js"></script>
     <script type="text/javascript">
+
         $(document).on("click", "#delete", function(e){
             e.preventDefault();
             var link = $(this).attr("href");
