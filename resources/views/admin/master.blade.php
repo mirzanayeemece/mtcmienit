@@ -14,6 +14,7 @@
     <!-- FROM HERE added by FARHAN for testing -->
     <link href="{{asset('bs4')}}/css/bootstrap.css" rel="stylesheet">
     <link href="{{asset('admin')}}/css/customnav.css" rel="stylesheet">
+    <link href="{{asset('admin')}}/css/dash.css" rel="stylesheet">
     <link href="{{asset('admin')}}/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- added by FARHAN for testing TO HERE -->
    </head>
