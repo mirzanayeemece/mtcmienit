@@ -1,6 +1,6 @@
 {{-- navbar --}}
 
-<nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="padding-right: 60px;">
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="padding-right: 80px;">
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar4">
         <span class="navbar-toggler-icon"></span>
@@ -119,6 +119,13 @@
       </a>
       <div class="dropdown-menu sm-menu">
         <a class="dropdown-item" href="">Inventory Reports</a>
+        <a class="dropdown-item" href="">Chart of Account Reports</a>
+        <a class="dropdown-item" href="">Daily Tansaction Reports</a>
+        <a class="dropdown-item" href="">Cash Book Reports</a>
+        <a class="dropdown-item" href="">Bank Book Reports</a>
+        <a class="dropdown-item" href="">Cash Flow Reports</a>
+        <a class="dropdown-item" href="">Balance Sheet</a>
+        <a class="dropdown-item" href="">Income Statement</a>
       </div>
     </li>
     {{-- <li class="nav-item dropdown dmenu">
