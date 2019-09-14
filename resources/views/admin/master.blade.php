@@ -71,13 +71,16 @@
     </script>
     <!-- FROM HERE added by FARHAN -->
     <!-- daterangepicker -->   
-    <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('js/daterangepicker.js')}}"></script>
+    <script src="{{asset('css/daterangepicker.css')}}"></script>
     <script src="{{asset('js/moment.min.js')}}"></script>
     <script type="text/javascript">
       $(function()
         {
-          $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd'
+          $('.picker').daterangepicker({
+            autoapply: true,
+            startDay: '05/05/2019',
+            endDay: '07/05/2019'
           });
         });
     </script>

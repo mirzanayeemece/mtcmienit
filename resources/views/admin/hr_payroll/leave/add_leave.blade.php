@@ -58,7 +58,7 @@
                 <div class="form-group row">
                       <label for="duration" class="col-md-4 col-form-label text-md-left">Duration:</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control datepicker" id="duration" name="duration" autocomplete="off" required>
+                      <input type="text" class="form-control daterangepicker" id="duration" name="duration" autocomplete="off" required>
                     </div>
                 </div>
 
@@ -95,13 +95,3 @@
     </div>
 </div>
 @endsection
-
-<script>
-$(function() {
-  $('input[name="duration"]').daterangepicker({
-    opens: 'left'
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-  });
-});
-</script>
