@@ -58,7 +58,7 @@
                 <div class="form-group row">
                       <label for="duration" class="col-md-4 col-form-label text-md-left">Duration:</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control daterangepicker" id="duration" name="duration" autocomplete="off" required>
+                      <input type="text" class="form-control" id="duration" name="duration" required>
                     </div>
                 </div>
 

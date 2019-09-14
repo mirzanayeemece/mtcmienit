@@ -160,6 +160,10 @@ Route::get('/edit_leave_category/{id}','HRandPayrollController@edit_leave_catego
 Route::post('/update_leave_category/{id}','HRandPayrollController@update_leave_category');
 Route::get('/delete_leave_category/{id}','HRandPayrollController@delete_leave_category');
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 //EMPLOYEE
 Route::get('/hr_payroll/employee/employees', 'HRandPayrollController@employee')->name('Employees');
 Route::get('/hr_payroll/employee/add_employee', 'HRandPayrollController@add_employee')->name('Add Employee');
