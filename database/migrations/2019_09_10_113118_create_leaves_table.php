@@ -16,7 +16,7 @@ class CreateLeavesTable extends Migration
         Schema::create('leaves', function (Blueprint $table) {
             $table->increments('id');
             $table->String('name',100);
-            $table->integer('duration');
+            $table->String('duration');
             $table->integer('leave_category_id')
                                     ->unsigned();
             $table->foreign('leave_category_id')

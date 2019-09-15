@@ -55,8 +55,8 @@
                         </td>
                         <td>{{$leave->description}}</td>
                         <td width="15%" align="right">
-                          <a href="{{URL::to('edit_employee/'.$employee->id)}}" class="btn btn-sm btn-info">Edit</a>
-                          <a href="{{URL::to('delete_employee/'.$employee->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                          <a href="{{URL::to('edit_leave/'.$leave->id)}}" class="btn btn-sm btn-info">Edit</a>
+                          <a href="{{URL::to('delete_leave/'.$leave->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                   @endforeach

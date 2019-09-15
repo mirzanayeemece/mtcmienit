@@ -13,6 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                      <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                     <a href="{{URL::to('/admin/user_role/adduserrole')}}" class="btn btn-primary">Add New User Role</a>
 
                     </div>

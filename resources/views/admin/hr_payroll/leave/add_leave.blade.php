@@ -55,17 +55,31 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                       <label for="duration" class="col-md-4 col-form-label text-md-left">Duration:</label>
                       <div class="col-md-6">
                       <input type="text" class="form-control" id="duration" name="duration" required>
                     </div>
+                </div> -->
+
+                <div class="form-group row">
+                  <label for="start_date" class="col-md-4 col-form-label text-md-left">Date/Start Date:</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control datepicker" id="start_date" name="start_date" autocomplete="off" required>
+                  </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="salary_grade_id" class="col-md-4 col-form-label text-md-left">Leave Category:</label>
+                  <label for="end_date" class="col-md-4 col-form-label text-md-left">End Date:</label>
                   <div class="col-md-6">
-                    <select id="salary_grade_id" name="salary_grade_id" class="form-control" required>
+                    <input type="text" class="form-control datepicker" id="end_date" name="end_date" autocomplete="off">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="leave_category_id" class="col-md-4 col-form-label text-md-left">Leave Category:</label>
+                  <div class="col-md-6">
+                    <select id="leave_category_id" name="leave_category_id" class="form-control" required>
                       <option value>--Choose One--</option>
                       @foreach($leave_category_info as $leave_category)
                         <option value="{{ $leave_category->id }}">{{ $leave_category->name }}</option>

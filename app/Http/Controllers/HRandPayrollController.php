@@ -298,59 +298,70 @@ class HRandPayrollController extends Controller
     public function save_leave(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100','unique:departments'],
-          'duration'  => ['required', 'string'],
-          'leave_category'  => ['required', 'integer','min:0'],
+          'name'  => ['required', 'string', 'max:100','unique:leaves'],
+          'start_date'  => ['required', 'date'],
+          'end_date'  => ['required', 'date'],
+          'leave_category_id'  => ['required', 'integer','min:0'],
           'description'  => ['max:255']
         ]);
         $data = array();
         $data['name'] = $request->name;
-        $data['duration'] = $request->duration;
-        $data['leave_category'] = $request->leave_category;
+        // $rs->${$item.'_data'}
+        $data['duration'] = $request->start_date.'-'.$request->end_date;
+        $data['leave_category_id'] = $request->leave_category_id;
         $data['description'] = $request->description;
         $data['created_at'] = now();
         
-        DB::table('departments')->insert($data);
-        Session::put('message','Department is Added Successfully');
-        return Redirect::to('/hr_payroll/department/add_department');
+        DB::table('leaves')->insert($data);
+        Session::put('message','Leave is Added Successfully');
+        return Redirect::to('/hr_payroll/leave/add_leave');
     }
     //EDIT LEAVE
     public function edit_leave($id)
     {
-        $department=DB::table('departments')
+        $leave=DB::table('leaves')
                            ->where('id',$id)
                            ->first();
-        $manage_department=view('admin.hr_payroll.department.edit_department')
-                         ->with('department',$department);
+        $leave_category_info=DB::table('leave_categories')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $manage_leave=view('admin.hr_payroll.leave.edit_leave')
+                         ->with('leave',$leave)
+                         ->with('leave_category_info',$leave_category_info);
         return view('admin.master')
-                         ->with('admin.hr_payroll.department.edit_department',$manage_department);
+                         ->with('admin.hr_payroll.leave.edit_leave',$manage_leave);
     }
     //UPDATE LEAVE
     public function update_leave(Request $request, $id)
     {
         $this->validate($request, [
           'name'  => ['required', 'string', 'max:100'],
+          'duration'  => ['required', 'string'],
+          'leave_category_id'  => ['required', 'integer','min:0'],
           'description'  => ['max:255']
         ]);
 
         $data = array();
         $data['name'] = $request->name;
+        $data['duration'] = $request->duration;
+        $data['leave_category_id'] = $request->leave_category_id;
         $data['description'] = $request->description;
+        $data['created_at'] = now();
 
-        DB::table('departments')
+        DB::table('leaves')
              ->where('id',$id)
              ->update($data);
-        Session::put('message','Department has been updated Successfully');
-        return Redirect::to('/hr_payroll/department/departments');
+        Session::put('message','Leave has been updated Successfully');
+        return Redirect::to('/hr_payroll/leave/leaves');
     }
     //DELETE LEAVE FROM DATABASE
     public function delete_leave($id)
     {
-        DB::table('departments')
+        DB::table('leaves')
                 ->where('id',$id)
                 ->delete();
-        Session::put('message', 'Department has been deleted Successfully');
-        return Redirect::to('/hr_payroll/department/departments');
+        Session::put('message', 'Leave has been deleted Successfully');
+        return Redirect::to('/hr_payroll/leave/leaves');
     }
 
 

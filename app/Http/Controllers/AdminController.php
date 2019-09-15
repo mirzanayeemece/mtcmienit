@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
+use PDF;
 use Session;
+use Exception;
 Session_start();
 
 class AdminController extends Controller
@@ -23,6 +25,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
+    //MAINTENANCE
+    public function maintenance(){
+        return view('admin.maintenance');
+    }
 
     // ----- METHODS FOR USER ----- //
     //USER
@@ -57,17 +63,19 @@ class AdminController extends Controller
         $this->validate($request, [
           'name'  => ['required', 'string', 'max:255'],
           'email'  => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'role_id'  => ['required', 'integer'],
           'password'  => ['required', 'string', 'min:6', 'confirmed']
         ]);
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
+        $data['role_id'] = $request->role_id;
         $data['password'] = Hash::make($request->password);
         $data['created_at'] = now();
         
 
         DB::table('users')->insert($data);
-        Session::put('message','Venue is Added Successfully');
+        Session::put('message','User is Added Successfully');
         return Redirect::to('/admin/user/adduser');
     }
     //EDIT USER IN DATABASE
@@ -180,11 +188,15 @@ class AdminController extends Controller
     //DELETE USERROLE FROM DATABASE
     public function delete_user_role($id)
     {
-        DB::table('roles')
-                ->where('id',$id)
-                ->delete();
-        Session::put('message', 'User Role has been deleted Successfully');
-        return Redirect::to('/admin/user_role/userrole');
+        try {
+            DB::table('roles')
+                    ->where('id',$id)
+                    ->delete();
+            Session::put('message', 'User Role has been deleted Successfully');
+            return Redirect::to('/admin/user_role/userrole');
+        } catch (Exception $e) {
+            return back()->withError('This User Role cannot be deleted because other User/Users depend on it. To delete this User Role, delete dependent User/Users first, only then you can delete it.');
+        }
     }
 
     // -----METHODS FOR ROLEWISEPERMISSION
@@ -197,5 +209,23 @@ class AdminController extends Controller
     //CHANGE-PASSWORD
     public function change_password(){
         return view('admin.admin.change_password/changepassword');
+    }
+
+    //SAVE-PASSWORD
+    public function save_password(Request $request, $id){
+        $this->validate($request, [
+          'email'  => ['required', 'email', 'max:100'],
+          'password'  => ['required', 'string','password', 'min:6','confirmed']
+        ]);
+
+        $data = array();
+        $data['email'] = $request->email;
+        $data['password'] = $request->password;
+
+        DB::table('users')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','User Password has been changed Successfully');
+        return Redirect::to('/admin/change_password/changepassword');
     }
 }

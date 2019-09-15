@@ -19,8 +19,10 @@
         <div class="dropdown-menu sm-menu">
         <a class="dropdown-item" href="{{URL::to('/admin/user/user')}}">User</a>
         <a class="dropdown-item" href="{{URL::to('/admin/user_role/userrole')}}">User Role</a>
-        <a class="dropdown-item" href="{{URL::to('/admin/role_wise_permission/rolewisepermission')}}">Role Wise Permission</a>
-        <a class="dropdown-item" href="{{URL::to('/admin/change_password/changepassword')}}">Change Password</a>
+        <!-- <a class="dropdown-item" href="{{URL::to('/admin/role_wise_permission/rolewisepermission')}}">Role Wise Permission</a> -->
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Role Wise Permission</a>
+        <!-- <a class="dropdown-item" href="{{URL::to('/admin/change_password/changepassword')}}">Change Password</a> -->
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Change Password</a>
         </div>
       </li>
     <li class="nav-item dropdown dmenu">
@@ -28,8 +30,8 @@
         Configuration
       </a>
       <div class="dropdown-menu sm-menu">
-        <a class="dropdown-item" href="">Hotel</a>
-        <a class="dropdown-item" href="">Discount</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Hotel</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Discount</a>
       </div>
     </li>
     <li class="nav-item dropdown dmenu">
@@ -73,7 +75,8 @@
         <a class="dropdown-item" href="{{URL::to('/restaurant/receiver/receivers')}}">Receivers</a>
         <a class="dropdown-item" href="{{URL::to('/restaurant/grocery_category/grocery_categories')}}">Grocery Category</a>
         <a class="dropdown-item" href="{{URL::to('/restaurant/grocery/groceries')}}">Grocery List</a>
-        <a class="dropdown-item" href="{{URL::to('/restaurant/purchase/purchases')}}">Purchases</a>
+        <!-- <a class="dropdown-item" href="{{URL::to('/restaurant/purchase/purchases')}}">Purchases</a> -->
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Purchases</a>
         <a class="dropdown-item" href="{{URL::to('/restaurant/meal_item/meal_items')}}">Meal Items</a>
         <a class="dropdown-item" href="{{URL::to('/restaurant/meal_item_type/meal_item_types')}}">Meal Types</a>
         <a class="dropdown-item" href="{{URL::to('/restaurant/menu/menus')}}">Menus</a>
@@ -97,8 +100,8 @@
         <a class="dropdown-item" href="{{URL::to('/inventory/inventory_receiver/inventory_receivers')}}">Receivers</a>
         <a class="dropdown-item" href="{{URL::to('/inventory/inventory_category/inventory_categories')}}">Category</a>
         <a class="dropdown-item" href="{{URL::to('/inventory/inventory_item/inventory_items')}}">Inv List</a>
-        <a class="dropdown-item" href="">Purchase</a>
-        <a class="dropdown-item" href="">Repairing</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Purchase</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Repairing</a>
       </div>
     </li>
     <li class="nav-item dropdown dmenu">
@@ -106,11 +109,11 @@
         Accounting
       </a>
       <div class="dropdown-menu sm-menu">
-        <a class="dropdown-item" href="">Generate Voucher</a>
-        <a class="dropdown-item" href="">Balance Sheet</a>
-        <a class="dropdown-item" href="">Income Statement</a>
-        <a class="dropdown-item" href="">Cash Book</a>
-        <a class="dropdown-item" href="">Bank Book</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Generate Voucher</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Balance Sheet</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Income Statement</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Cash Book</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Bank Book</a>
       </div>
     </li>
     <li class="nav-item dropdown dmenu">
@@ -118,14 +121,14 @@
         Reports
       </a>
       <div class="dropdown-menu sm-menu">
-        <a class="dropdown-item" href="">Inventory Reports</a>
-        <a class="dropdown-item" href="">Chart of Account Reports</a>
-        <a class="dropdown-item" href="">Daily Tansaction Reports</a>
-        <a class="dropdown-item" href="">Cash Book Reports</a>
-        <a class="dropdown-item" href="">Bank Book Reports</a>
-        <a class="dropdown-item" href="">Cash Flow Reports</a>
-        <a class="dropdown-item" href="">Balance Sheet</a>
-        <a class="dropdown-item" href="">Income Statement</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Inventory Reports</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Chart of Account Reports</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Daily Tansaction Reports</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Cash Book Reports</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Bank Book Reports</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Cash Flow Reports</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Balance Sheet</a>
+        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Income Statement</a>
       </div>
     </li>
     {{-- <li class="nav-item dropdown dmenu">

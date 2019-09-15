@@ -74,9 +74,9 @@
       </div>
 
       <div class="form-group row">
-        <label for="role" class="col-md-4 col-form-label text-md-left">{{ __('Role') }}</label>
+        <label for="role_id" class="col-md-4 col-form-label text-md-left">{{ __('Role') }}</label>
         <div class="col-md-6">
-            <select id="role" name="role" class="form-control" required>
+            <select id="role_id" name="role_id" class="form-control" required>
               <option value>--Choose One--</option>
                 @foreach($role_info as $row)
                   <option value="{{ $row->id }}">{{ $row->name }}</option>

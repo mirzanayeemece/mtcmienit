@@ -23,6 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //training center
 include('traningcenter.php');
 
+
+//
+Route::get('/maintenance', 'AdminController@maintenance');
+
 //user
 Route::get('/admin/user/user', 'AdminController@user')->name('User');
 Route::get('/admin/user/adduser', 'AdminController@adduser')->name('Add User');
@@ -44,6 +48,7 @@ Route::get('/admin/role_wise_permission/rolewisepermission', 'AdminController@ro
 
 //change-password
 Route::get('/admin/change_password/changepassword', 'AdminController@change_password')->name('Change Password');
+Route::post('/save_password/{id}', 'AdminController@save_password');
 
 
 //------HOTEL-MANAGEMENT-START-------//
@@ -260,7 +265,6 @@ Route::get('/delete_purchase/{id}','RestaurantController@delete_purchase');
 
 
 //------INVENTORY START-------//
-
 
 //INVENTORY-SUPPLIER
 Route::get('/inventory/inventory_supplier/inventory_suppliers', 'InventoryController@inventory_supplier')->name('Suppliers');

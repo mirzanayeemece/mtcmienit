@@ -56,24 +56,30 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                       <label for="duration" class="col-md-4 col-form-label text-md-left">Duration:</label>
                       <div class="col-md-6">
                       <input type="text" class="form-control datepicker" value="{{$leave->duration}}" id="duration" name="duration" autocomplete="off" required>
                     </div>
+                </div> -->
+                <div class="form-group row">
+                  <label for="duration" class="col-md-4 col-form-label text-md-left">Duration:</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" value="{{$leave->duration}}" id="duration" name="duration" autocomplete="off" required>
+                  </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="salary_grade_id" class="col-md-4 col-form-label text-md-left">Salary Grade:</label>
+                  <label for="leave_category_id" class="col-md-4 col-form-label text-md-left">Leave Category:</label>
                   <div class="col-md-6">
-                    <select id="salary_grade_id" name="salary_grade_id" class="form-control" required>
+                    <select id="leave_category_id" name="leave_category_id" class="form-control" required>
                       <option value>--Choose One--</option>
-                      @foreach($salary_grade_info as $salary_grade)
-                        <option value="{{ $salary_grade->id }}"
-                          @if($salary_grade->id == $leave->salary_grade_id)
-                            {{ 'Selected' }}
-                          @endif
-                          >{{ $salary_grade->name }}</option>
+                      @foreach($leave_category_info as $leave_category)
+                        <option value="{{ $leave_category->id }}" 
+                            @if($leave_category->id == $leave->leave_category_id)
+                              {{ 'Selected' }}
+                            @endif
+                          >{{ $leave_category->name }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -82,7 +88,7 @@
                 <div class="form-group row">
                     <label for="description" class="col-md-4 col-form-label text-md-left">Description:</label>
                     <div class="col-md-6">
-                    <textarea type="text" class="form-control" id="description" name="description">{{$leave->other}}</textarea>
+                    <textarea type="text" class="form-control" id="description" name="description">{{ $leave->description }}</textarea>
                   </div>
                 </div>
 
