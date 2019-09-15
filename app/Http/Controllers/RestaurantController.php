@@ -29,7 +29,7 @@ class RestaurantController extends Controller
 //------- METHODS FOR SUPPLIER --------//
     //SUPPLIER
     public function supplier(){
-        $supplier_info=DB::table('suppliers')
+        $supplier_info=DB::table('restaurant_suppliers')
                            ->orderBy('id', 'desc')
                            ->get();
         $manage_suppliers=view('admin.restaurant.supplier.suppliers')
@@ -56,14 +56,14 @@ class RestaurantController extends Controller
         $data['phone_no'] = $request->phone_no;
         $data['created_at'] = now();
         
-        DB::table('suppliers')->insert($data);
+        DB::table('restaurant_suppliers')->insert($data);
         Session::put('message','Supplier is Added Successfully');
         return Redirect::to('/restaurant/supplier/add_supplier');
     }
     //EDIT SUPPLIER
     public function edit_supplier($id)
     {
-        $supplier=DB::table('suppliers')
+        $supplier=DB::table('restaurant_suppliers')
                            ->where('id',$id)
                            ->first();
         $manage_supplier=view('admin.restaurant.supplier.edit_supplier')
@@ -85,7 +85,7 @@ class RestaurantController extends Controller
         $data['address'] = $request->address;
         $data['phone_no'] = $request->phone_no;
 
-        DB::table('suppliers')
+        DB::table('restaurant_suppliers')
              ->where('id',$id)
              ->update($data);
         Session::put('message','Supplier has been updated Successfully');
@@ -94,7 +94,7 @@ class RestaurantController extends Controller
     //DELETE SUPPLIER FROM DATABASE
     public function delete_supplier($id)
     {
-        DB::table('suppliers')
+        DB::table('restaurant_suppliers')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Supplier has been deleted Successfully');
@@ -106,7 +106,7 @@ class RestaurantController extends Controller
 //------- METHODS FOR RECEIVER --------//
     //RECEIVER
     public function receiver(){
-        $receiver_info=DB::table('receivers')
+        $receiver_info=DB::table('restaurant_receivers')
                            ->orderBy('id', 'desc')
                            ->get();
         $employee_info=DB::table('employees')
@@ -136,14 +136,14 @@ class RestaurantController extends Controller
         $data['employee_id'] = $request->employee_id;
         $data['created_at'] = now();
         
-        DB::table('receivers')->insert($data);
+        DB::table('restaurant_receivers')->insert($data);
         Session::put('message','Receiver is Added Successfully');
         return Redirect::to('/restaurant/receiver/add_receiver');
     }
     //DELETE RECEIVER FROM DATABASE
     public function delete_receiver($id)
     {
-        DB::table('receivers')
+        DB::table('restaurant_receivers')
                 ->where('id',$id)
                 ->delete();
         Session::put('message', 'Receiver has been deleted Successfully');

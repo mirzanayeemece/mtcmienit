@@ -11,15 +11,11 @@
     <!-- Bootstrap -->
     <link href="{{asset('bs4')}}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('bs4')}}/css/font-awesome.min.css" rel="stylesheet">
-    <!-- FROM HERE added by FARHAN for testing -->
     <link href="{{asset('bs4')}}/css/bootstrap.css" rel="stylesheet">
     <link href="{{asset('admin')}}/css/customnav.css" rel="stylesheet">
     <link href="{{asset('admin')}}/css/dash.css" rel="stylesheet">
     <link href="{{asset('admin')}}/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.js">
-    <link href="{{asset('css')}}/daterangepicker.css" rel="stylesheet">
-    <!-- added by FARHAN for testing TO HERE -->
+
    </head>
 
    <body>
@@ -72,25 +68,6 @@
             });
         });
     </script>
-    <!-- FROM HERE added by FARHAN -->
-    <!-- daterangepicker -->   
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjscloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('js/daterangepicker.js')}}"></script>
-    <script src="{{asset('css/daterangepicker.css')}}"></script>
-    <script src="{{asset('js/moment.min.js')}}"></script>
-    <script type="text/javascript">
-      $(function()
-        {
-          $('#duration').daterangepicker({
-            autoapply: true,
-            startDay: '05/05/2019',
-            endDay: '07/05/2019'
-          });
-        });
-    </script>
-    <!-- added by FARHAN TO HERE -->
 
 
 </body>

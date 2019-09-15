@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"><big><strong>EDIT GROCERY</strong></big></div>
+                <div class="card-header"><big><strong>EDIT INVENTORY CATEGORY</strong></big></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{URL::to('/restaurant/grocery/groceries')}}" class="btn btn-primary">Back</a>
+                    <a href="{{URL::to('/inventory/inventory_category/inventory_categories')}}" class="btn btn-primary">Back</a>
                 </div>
    
                 @if (count($errors) > 0)
@@ -35,7 +35,7 @@
                 @endif
 
                 <!---------------FORM--------------->
-                <form class="" action="{{ url('/update_grocery',$grocery->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
+                <form class="" action="{{ url('/update_inventory_category',$inventory_category->id) }}" method="post" enctype="multipart/form-data" style="padding: 0 30px 0 30px;">
                   @csrf
 
                   <p class="alert-success" style="font-size: 20px; color: white; background:#149278; padding: 0 30px 0 30px;">
@@ -50,29 +50,13 @@
                   </p>
 
                   <div class="form-group">
-                    <label for="name">Grocery Name:</label>
-                    <input type="text" class="form-control" value="{{$grocery->name}}" id="name" name="name" required>
+                    <label for="name">Inventory Category Name:</label>
+                    <input type="text" class="form-control" value="{{$inventory_category->name}}" id="name" name="name" required>
                   </div>
-
-                  <div class="form-group">
-                    <label for="grocery_category_id">Grocery Category:</label>
-                    <select id="grocery_category_id" name="grocery_category_id" class="form-control" required>
-                      <option value>--Choose One--</option>
-                      @foreach($grocery_category_info as $grocery_category)
-                        <option value="{{ $grocery_category->id }}" 
-                          @if($grocery->grocery_category_id == $grocery_category->id)
-                            {{ 'Selected' }}
-                          @endif
-                          >{{ $grocery_category->name }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-
-
 
                   <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" type="text" cols="80" rows="4" placeholder="" class="form-control">{{$grocery->description}}</textarea>
+                    <textarea id="description" name="description" type="text" cols="80" rows="4" placeholder="" class="form-control">{{$inventory_category->description}}</textarea>
                   </div>
 
                   <!-- Button -->

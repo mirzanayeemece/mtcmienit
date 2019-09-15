@@ -93,10 +93,10 @@
         Inventory
       </a>
       <div class="dropdown-menu sm-menu">
-        <a class="dropdown-item" href="">Inv. Suppliers</a>
-        <a class="dropdown-item" href="">Receivers</a>
-        <a class="dropdown-item" href="">Category</a>
-        <a class="dropdown-item" href="">Inv List</a>
+        <a class="dropdown-item" href="{{URL::to('/inventory/inventory_supplier/inventory_suppliers')}}">Inv. Suppliers</a>
+        <a class="dropdown-item" href="{{URL::to('/inventory/inventory_receiver/inventory_receivers')}}">Receivers</a>
+        <a class="dropdown-item" href="{{URL::to('/inventory/inventory_category/inventory_categories')}}">Category</a>
+        <a class="dropdown-item" href="{{URL::to('/inventory/inventory_item/inventory_items')}}">Inv List</a>
         <a class="dropdown-item" href="">Purchase</a>
         <a class="dropdown-item" href="">Repairing</a>
       </div>
