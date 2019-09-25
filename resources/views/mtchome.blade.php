@@ -28,9 +28,9 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <!------Add-favicon------->
-    {{--
-    <link rel="apple-touch-icon-precomposed" href="https://hotelthemtctoday.com/images/favicon.png">
-    <link rel="icon" href="https://hotelthemtctoday.com/images/favicon.png"> --}}
+    
+    <link rel="apple-touch-icon-precomposed" href="/homefile/logo.png">
+    <link rel="icon" href="/homefile/logo.png"> 
     <!------Add-css-link------->
     <link rel="stylesheet" href="/homefile/bootstrap.min.css">
     <link rel="stylesheet" href="/homefile/bootstrap-select.min.css">
@@ -133,7 +133,7 @@
                 <div class="brand">
                     <div class="logo">
                         <a href="https://hotelthemtctoday.com/index.php">
-                            <img src="/homefile/logo.png" alt="MTC LOGO" width="120" height="60">
+                            <img src="/homefile/logo.png" alt="MTC LOGO" width="60" height="60">
                         </a>
                     </div>
                 </div>
@@ -297,7 +297,7 @@
                             <div class="tp-loop-wrap" style="position:absolute;display:block;;">
                                 <div class="tp-mask-wrap" style="position: absolute; display: block; overflow: hidden; transform: matrix(1, 0, 0, 1, 0, 0);">
                                     <div class="tp-caption tp_m_title tp-resizeme mobile_off" data-x="center" data-hoffset="" data-y="240" data-voffset="" data-responsive_offset="on" data-fontsize="[&#39;25&#39;,&#39;25&#39;,&#39;18&#39;,&#39;18&#39;]" data-lineheight="[&#39;25&#39;,&#39;25&#39;,&#39;18&#39;,&#39;18&#39;]" data-whitespace="nowrap" data-frames="[{&quot;delay&quot;:1800,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;auto:auto;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]" style="color: rgb(255, 255, 255); visibility: inherit; transition: none 0s ease 0s; text-align: inherit; line-height: 25px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 25px; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform-origin: 50% 50% 0px; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);" id="layer-554797810">
-                                        Hotel The mtc Today is one of the best five-star Standard Luxury Hotel in mtc's Bazar
+                                        Hotel The mtc Today is one of the best five-star Standard Luxury Hotel
 
                                     </div>
                                 </div>
