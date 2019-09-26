@@ -1,10 +1,10 @@
 {{-- header --}}
-<div class="container-fluid" style="background-color: #145169;">
+<div class="container-fluid" style="background-color: #145169; font-family: 'Nunito', sans-serif; font-weight: 200; ">
       <div class="row">
         {{-- <div class="col-md-12"> --}}
           <div class="col-md-2 col-xs-3" style="padding-top: 5px; padding-bottom: 3px; ">
 
-          <p id="demo" style="color: white"></p>
+          <p id="demo" style="color: white;"></p>
 
           <script>
           var d = new Date();
@@ -29,10 +29,10 @@
 	            onclick="event.preventDefault();
 	            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
 	            {{ __('Logout') }}
-		      </a>
-		      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-		          @csrf
-		      </form>
+		        </a>
+  		      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+  		          @csrf
+  		      </form>
           </div>
       {{-- </div> --}}
     </div>

@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 include('traningcenter.php');
 
 
-//
+//maintenance
 Route::get('/maintenance', 'AdminController@maintenance');
 
 //user
@@ -44,7 +44,10 @@ Route::get('/edit_user_role/{id}','AdminController@edit_user_role')->name('Edit 
 Route::post('/update_user_role/{id}','AdminController@update_user_role');
 
 //role-wise-permission
-Route::get('/admin/role_wise_permission/rolewisepermission', 'AdminController@role_wise_permission')->name('Role Wise Permission');
+// Route::get('/admin/role_wise_permission/rolewisepermission', 'AdminController@role_wise_permission')->name('Role Wise Permission');
+Route::get('/admin/role_wise_permission/role_wise_permission', ['uses'=>'RoleController@manageRole'])->name('Role Wise Permission');
+// Route::get('role-tree-view',['uses'=>'RoleController@manageRole']);
+Route::post('add-role',['as'=>'add.role','uses'=>'RoleController@addRole']);
 
 //change-password
 Route::get('/admin/change_password/changepassword', 'AdminController@change_password')->name('Change Password');

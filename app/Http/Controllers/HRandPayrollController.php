@@ -89,11 +89,15 @@ class HRandPayrollController extends Controller
     //DELETE DEPARTMENT FROM DATABASE
     public function delete_department($id)
     {
-        DB::table('departments')
+        try {
+          DB::table('departments')
                 ->where('id',$id)
                 ->delete();
-        Session::put('message', 'Department has been deleted Successfully');
-        return Redirect::to('/hr_payroll/department/departments');
+          Session::put('message', 'Department has been deleted Successfully');
+          return Redirect::to('/hr_payroll/department/departments');
+        } catch (Exception $e) {
+          return back()->withError('This Department cannot be deleted because other Employee/Employees depend on it. To delete this Department, delete dependent Employee/Employees first, only then you can delete it.');
+        }
     }
 
 
@@ -160,11 +164,15 @@ class HRandPayrollController extends Controller
     //DELETE EMPLOYEE-DESIGNATION FROM DATABASE
     public function delete_employee_designation($id)
     {
-        DB::table('employee_designations')
+        try {
+          DB::table('employee_designations')
                 ->where('id',$id)
                 ->delete();
-        Session::put('message', 'Employee Designation has been deleted Successfully');
-        return Redirect::to('/hr_payroll/employee_designation/employee_designations');
+          Session::put('message', 'Employee Designation has been deleted Successfully');
+          return Redirect::to('/hr_payroll/employee_designation/employee_designations');
+        } catch (Exception $e) {
+          return back()->withError('This Employee Designation cannot be deleted because other Employee/Employees depend on it. To delete this Employee Designation, delete dependent Employee/Employees first, only then you can delete it.');
+        }
     }
 
 
@@ -263,11 +271,15 @@ class HRandPayrollController extends Controller
     //DELETE SALARY-GRADE FROM DATABASE
     public function delete_salary_grade($id)
     {
-        DB::table('salary_grades')
+        try {
+          DB::table('salary_grades')
                 ->where('id',$id)
                 ->delete();
-        Session::put('message', 'Salary Grade has been deleted Successfully');
-        return Redirect::to('/hr_payroll/salary_grade/salary_grades');
+          Session::put('message', 'Salary Grade has been deleted Successfully');
+          return Redirect::to('/hr_payroll/salary_grade/salary_grades');
+        } catch (Exception $e) {
+          return back()->withError('This Salary Grade cannot be deleted because other Employee/Employees depend on it. To delete this Salary Grade, delete dependent Employee/Employees first, only then you can delete it.');
+        }
     }
 
 
