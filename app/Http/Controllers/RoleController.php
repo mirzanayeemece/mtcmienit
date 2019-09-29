@@ -17,7 +17,7 @@ class RoleController extends Controller
      */
     public function manageRole()
     {
-        $roles = Role::where('parent_id', '=', 0)->get();
+        $roles = Role::where('parent_id', '=', 1)->get();
         $allRoles = Role::pluck('name','id')->all();
 
         return view('admin/admin/role_wise_permission/role_wise_permission',compact('roles','allRoles'));

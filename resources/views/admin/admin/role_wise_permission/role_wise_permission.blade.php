@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Roles Permission Block</div>
+                <div class="card-header"><h3>Role Wise Permissions</h3></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,18 +23,25 @@
                     @endphp
                     
                     </p>
-                    <div class="col-md-6">
-                        <h3>Role Wise Permissions</h3>
-                        <ul id="tree1">
-                            @foreach($roles as $role)
-                                <li>
-                                    {{ $role->name }}
+                    <div class="col-md-12">
+                        
+                            <table id="tree1" class="table table-dark table-hover">
+                                
+                                    @foreach($roles as $role)
+                                    <tr>
+                                        <td>
+                                            <img src="{{asset('img')}}/admin.png" alt="--->" height="20px" width="20px">
+                                            <b><big>{{ $role->name }}</big></b>
+                                            
+                                        </td>
+                                    </tr>
                                     @if(count($role->childs))
                                         @include('admin.admin.role_wise_permission.manageChild',['childs' => $role->childs])
                                     @endif
-                                </li>
-                            @endforeach
-                        </ul>
+                                    @endforeach
+                                
+                            </table>
+                        
                     </div>
                 </div>
             </div>
