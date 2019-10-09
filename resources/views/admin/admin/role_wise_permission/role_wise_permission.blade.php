@@ -26,19 +26,49 @@
                     <div class="col-md-12">
                         
                             <table id="tree1" class="table table-dark table-hover">
-                                
-                                    @foreach($roles as $role)
+                                {{-- <thead>
                                     <tr>
-                                        <td>
-                                            <img src="{{asset('img')}}/admin.png" alt="--->" height="20px" width="20px">
-                                            <b><big>{{ $role->name }}</big></b>
-                                            
-                                        </td>
+                                        <th>#</th>
+                                        <th>Name</th>
                                     </tr>
-                                    @if(count($role->childs))
-                                        @include('admin.admin.role_wise_permission.manageChild',['childs' => $role->childs])
-                                    @endif
+                                </thead>
+
+                                <tbody>
+                                      
+                                      @foreach($roles as $role)
+                                        <tr>
+                                            <td>
+                                                {{ $role->id }}
+                                            </td>
+                                            <td>
+                                                <img src="{{asset('img')}}/admin.png" alt="--->" height="20px" width="20px">
+                                                <b><big>{{ $role->name }}</big></b>
+                                                
+                                            </td>
+                                        </tr>
+                                        @if(count($role->childs))
+                                            @include('admin.admin.role_wise_permission.manageChild',['childs' => $role->childs])
+                                        @endif
+                                      @endforeach
+                                </tbody> --}}
+
+                                    {{-- previous  --}}
+                                    @foreach($roles as $role)
+                                        <tr>
+                                            <td>
+                                                {{ $role->id }}
+                                            </td>
+                                            <td>
+                                                <img src="{{asset('img')}}/admin.png" alt="--->" height="20px" width="20px">
+                                                <b><big>{{ $role->name }}</big></b>
+                                                
+                                            </td>
+                                        </tr>
+                                        @if(count($role->childs))
+                                            @include('admin.admin.role_wise_permission.manageChild',['childs' => $role->childs])
+                                        @endif
                                     @endforeach
+                                    {{-- previous --}}
                                 
                             </table>
                         
@@ -48,4 +78,18 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('datatable')
+    
+<!-- datatable -->
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script> --}}
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#tree1').DataTable();
+    } );
+</script>
+
 @endsection

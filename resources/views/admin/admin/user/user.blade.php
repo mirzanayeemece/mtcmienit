@@ -46,7 +46,9 @@
             <td>{{$row->email}}</td>
             <td>
                 @foreach($role_info as $row_role)
-                    {{$row_role->name}}
+                    @if($row_role->id == $row->role_id)
+                        {{$row_role->name}}
+                    @endif
                 @endforeach
             </td>
             <td width="15%" align="right">

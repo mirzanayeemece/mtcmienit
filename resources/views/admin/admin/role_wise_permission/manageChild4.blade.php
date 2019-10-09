@@ -1,5 +1,8 @@
 				@foreach($childs as $child)
 						<tr>
+								<td>
+									{{ $child->id }}
+								</td>
 								
 								<td>
 										@php

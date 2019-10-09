@@ -109,6 +109,7 @@
         Accounting
       </a>
       <div class="dropdown-menu sm-menu">
+        <a class="dropdown-item" href="{{URL::to('/account/ledger_account/ledger_accounts')}}">Ledger Accounts</a>
         <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Generate Voucher</a>
         <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Balance Sheet</a>
         <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Income Statement</a>

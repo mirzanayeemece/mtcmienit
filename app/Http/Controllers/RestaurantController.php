@@ -45,7 +45,7 @@ class RestaurantController extends Controller
     public function save_supplier(Request $request)
     {
         $this->validate($request, [
-          'name'  => ['required', 'string', 'max:100','unique:suppliers'],
+          'name'  => ['required', 'string', 'max:100','unique:restaurant_suppliers'],
           'address'  => ['required', 'string', 'max:100'],
           'phone_no'  => ['required', 'max:20']
           
@@ -130,7 +130,7 @@ class RestaurantController extends Controller
     public function save_receiver(Request $request)
     {
         $this->validate($request, [
-          'employee_id'  => ['required', 'integer', 'unique:receivers']
+          'employee_id'  => ['required', 'integer', 'unique:restaurant_receivers']
         ]);
         $data = array();
         $data['employee_id'] = $request->employee_id;
