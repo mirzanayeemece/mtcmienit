@@ -32,6 +32,8 @@ class AccountController extends Controller
         $account_head_types = DB::table('account_head_types')
         					->orderBy('id', 'asc')
                           	->get();
+        $all = DB::table('account_heads')
+                  ->get();
         $assets = DB::table('account_heads')
         					->where('parent_id', '=', 2)
         					->where('parent_code', '=', 1000)
@@ -351,6 +353,7 @@ class AccountController extends Controller
 
         $manage_ledger_accounts = view('admin.account.ledger_account.ledger_accounts')
                         ->with('account_head_types',$account_head_types)
+                        ->with('all',$all)
                           	->with('assets',$assets)
                                 ->with('asset_fixed',$asset_fixed)
                                     ->with('fixed_land_and_building',$fixed_land_and_building)

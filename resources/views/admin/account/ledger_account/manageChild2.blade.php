@@ -3,11 +3,8 @@
 	<tbody>
 		<tr>
 				<td>
-					{{ $child->id }}
-				</td>
-				<td>
 						@php
-	                          echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+	                          echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
 	                    switch ($child->parent_code) {
 	                    	case '7700':
 	                    	case '4500':
@@ -28,6 +25,18 @@
 	    		</td>
 	    		<td>
 					{{ $child->code }}
+				</td>
+				<td>
+					@foreach($all as $heads)
+						@if($heads->code == $child->parent_code)
+							{{ $heads->name }}
+						@endif
+					@endforeach
+				</td>
+				<td>
+					<a href="{{URL::to('/'.$child->id)}}" class="" title="Add"><img src="{{asset('img')}}/add.png" alt="add" height="20px" width="20px"></a>
+                    <a href="{{URL::to('/'.$child->id)}}" class="" title="Edit"><img src="{{asset('img')}}/edit.png" alt="edit" height="20px" width="20px"></a>
+                    <a href="{{URL::to('/'.$child->id)}}" class="" title="Delete" id="delete"><img src="{{asset('img')}}/delete.png" alt="delete" height="20px" width="20px"></a>
 				</td>
 	  	</tr>
 	  			@if(count($childs) && $child->code == 1150)
