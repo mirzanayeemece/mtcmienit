@@ -435,4 +435,91 @@ class AccountController extends Controller
         return view('admin.master')
                           	->with('admin.account.ledger_account.ledger_accounts',$manage_ledger_accounts);
     }
+
+    // ----- METHODS FOR VOUCHER ----- //
+    //Vouchers
+    public function voucher(){
+        $voucher_info=DB::table('vouchers')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $voucher_type_info=DB::table('vouchers')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $manage_vouchers=view('admin.account.voucher.vouchers')
+                            ->with('voucher_info',$voucher_info)
+                            ->with('voucher_type_info',$voucher_type_info);
+        return view('admin.master')
+                            ->with('admin.account.voucher.vouchers',$manage_vouchers);
+    }
+    //ADD GROCERY
+    public function add_grocery(){
+        $grocery_category_info=DB::table('grocery_categories')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        return view('admin.restaurant.grocery.add_grocery')
+                            ->with('grocery_category_info',$grocery_category_info);
+    }
+    //SAVE GROCERY TO DATABASE
+    public function save_grocery(Request $request)
+    {
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:100','unique:groceries'],
+          'grocery_category_id'  => ['required', 'integer'],
+          'description'  => ['max:255'],
+          
+        ]);
+        $data = array();
+        $data['name'] = $request->name;
+        $data['grocery_category_id'] = $request->grocery_category_id;
+        $data['description'] = $request->description;
+        $data['created_at'] = now();
+        
+        DB::table('groceries')->insert($data);
+        Session::put('message','Grocery is Added Successfully');
+        return Redirect::to('/restaurant/grocery/add_grocery');
+    }
+    //EDIT GROCERY
+    public function edit_grocery($id)
+    {
+        $grocery=DB::table('groceries')
+                           ->where('id',$id)
+                           ->first();
+        $grocery_category_info=DB::table('grocery_categories')
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $manage_grocery=view('admin.restaurant.grocery.edit_grocery')
+                         ->with('grocery',$grocery)
+                         ->with('grocery_category_info',$grocery_category_info);
+        return view('admin.master')
+                         ->with('admin.restaurant.grocery.edit_grocery',$manage_grocery);
+    }
+    //UPDATE GROCERY
+    public function update_grocery(Request $request, $id)
+    {
+        $this->validate($request, [
+          'name'  => ['required', 'string', 'max:100'],
+          'grocery_category_id'  => ['required', 'integer'],
+          'description'  => ['max:255']
+        ]);
+
+        $data = array();
+        $data['name'] = $request->name;
+        $data['grocery_category_id'] = $request->grocery_category_id;
+        $data['description'] = $request->description;
+
+        DB::table('groceries')
+             ->where('id',$id)
+             ->update($data);
+        Session::put('message','Grocery has been updated Successfully');
+        return Redirect::to('/restaurant/grocery/groceries');
+    }
+    //DELETE GROCERY FROM DATABASE
+    public function delete_grocery($id)
+    {
+        DB::table('groceries')
+                ->where('id',$id)
+                ->delete();
+        Session::put('message', 'Grocery has been deleted Successfully');
+        return Redirect::to('/restaurant/grocery/groceries');
+    }
 }

@@ -16,7 +16,7 @@ class CreateAccountTypesTable extends Migration
         Schema::create('account_head_types', function (Blueprint $table) {
             $table->increments('id');
             $table->String('name');
-            $table->integer('code')->unsigned();
+            $table->integer('code');
             $table->timestamps();
         });
     }

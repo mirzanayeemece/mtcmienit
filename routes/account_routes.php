@@ -2,6 +2,7 @@
 
 //ACCOUNT
 Route::get('/account/ledger_account/ledger_accounts', 'AccountController@ledger_account');
+Route::get('/account/voucher/vouchers', 'AccountController@voucher');
 
 // Route::get('/restaurant/menu_type/add_menu_type', 'RestaurantController@add_menu_type')->name('Add Menu Type');
 // Route::post('/save_menu_type','RestaurantController@save_menu_type');

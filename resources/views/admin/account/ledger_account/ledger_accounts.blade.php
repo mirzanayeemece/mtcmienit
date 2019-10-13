@@ -23,15 +23,15 @@
                     @endphp
                     </p>
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-sm-left">
                         
                             <table id="tree1" class="table table-dark table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Code</th>
-                                        <th>Account Type</th>
-                                        <th>Actions</th>
+                                        <th width="60%">Name</th>
+                                        <th width="10%">Code</th>
+                                        <th width="20%">Account Type</th>
+                                        <th width="10%">Actions</th>
                                     </tr>
                                 </thead>
 
@@ -102,10 +102,10 @@
 {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script> --}}
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script>
+{{-- <script>
     $(document).ready(function() {
         $('#tree1').DataTable();
     } );
-</script>
+</script> --}}
 
 @endsection

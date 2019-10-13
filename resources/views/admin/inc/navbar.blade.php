@@ -110,13 +110,26 @@
       </a>
       <div class="dropdown-menu sm-menu">
         <a class="dropdown-item" href="{{URL::to('/account/ledger_account/ledger_accounts')}}">Ledger Accounts</a>
-        <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Generate Voucher</a>
         <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Balance Sheet</a>
         <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Income Statement</a>
         <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Cash Book</a>
         <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Bank Book</a>
+        
       </div>
     </li>
+    <li class="nav-item dropdown dmenu">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Voucher</a>
+          <div class="dropdown-menu sm-menu">
+            <a class="dropdown-item" href="{{URL::to('/account/voucher/vouchers')}}">Vouchers List</a>
+            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Credit Voucher (Auto)</a>
+            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Debit Voucher (Auto)</a>
+            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Journal Voucher (Auto)</a>
+            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Credit Voucher (Manual)</a>
+            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Debit Voucher (Manual)</a>
+            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Contra Voucher (Manual)</a>
+            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Journal Voucher (Manual)</a>
+          </div>
+        </li>
     <li class="nav-item dropdown dmenu">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         Reports

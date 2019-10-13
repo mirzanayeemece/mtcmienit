@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccountHeadsTable extends Migration
+class CreateVoucherTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateAccountHeadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_heads', function (Blueprint $table) {
+        Schema::create('voucher_types', function (Blueprint $table) {
             $table->increments('id');
             $table->String('name');
-            $table->integer('parent_id');
-            $table->String('code');
-            $table->integer('parent_code');
+            $table->String('short_name');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateAccountHeadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account_heads');
+        Schema::dropIfExists('voucher_types');
     }
 }

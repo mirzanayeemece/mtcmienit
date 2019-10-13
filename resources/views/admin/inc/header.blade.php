@@ -1,5 +1,5 @@
 {{-- header --}}
-<div class="container-fluid" style="background-color: #145169; font-family: 'Nunito', sans-serif; font-weight: 200; ">
+<div class="container-fluid" style="background-color: #1f9bcc; font-family: 'Nunito', sans-serif; font-weight: 200; ">
       <div class="row">
         {{-- <div class="col-md-12"> --}}
           <div class="col-md-2 col-xs-3" style="padding-top: 5px; padding-bottom: 3px; ">
