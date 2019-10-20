@@ -35,8 +35,6 @@ class HotelController extends Controller
                            ->orderBy('id', 'desc')
                            ->get();
 
-
-
         $manage_buildings=view('admin.hotel_management.building.building_list')
                          ->with('all_buildings_info',$all_buildings_info)
                          ->with('building_type_info',$building_type_info);
@@ -401,6 +399,30 @@ class HotelController extends Controller
 
 
     //------- METHODS FOR ROOM --------//
+    
+    //ROOM-VIEWER
+    public function room_viewer(){
+        $rooms_info=DB::table('rooms')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $room_category_info=DB::table('room_categories')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $floor_info=DB::table('floors')
+                           ->orderBy('id', 'desc')
+                           ->get();
+        $building_info=DB::table('buildings')
+                           ->orderBy('id', 'desc')
+                           ->get();
+
+        $manage_rooms=view('admin.hotel_management.room.room_viewer')
+                         ->with('floor_info',$floor_info)
+                         ->with('rooms_info',$rooms_info)
+                         ->with('room_category_info',$room_category_info)
+                         ->with('building_info',$building_info);
+        return view('admin.master')
+                         ->with('admin.hotel_management.room.room_viewer',$manage_rooms);
+    }
     //ROOM
     public function room(){
         $rooms_info=DB::table('rooms')

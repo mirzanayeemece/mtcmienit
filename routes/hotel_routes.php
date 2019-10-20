@@ -31,6 +31,7 @@ Route::post('/updatefloor/{id}','HotelController@update_floor');
 Route::get('/deletefloor/{id}','HotelController@delete_floor');
 
 //ROOM
+Route::get('/hotel_management/room/room_viewer', 'HotelController@room_viewer');
 Route::get('/hotel_management/room/room_category_list', 'HotelController@room_category')->name('Room Categories');
 Route::get('/hotel_management/room/addroomcategory', 'HotelController@add_room_category')->name('Add Room Category');
 Route::get('/hotel_management/room/room_list', 'HotelController@room')->name('Rooms');

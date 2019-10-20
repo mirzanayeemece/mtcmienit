@@ -39,6 +39,7 @@
         Hotel Management
       </a>
       <div class="dropdown-menu sm-menu">
+        <a class="dropdown-item" href="{{URL::to('/hotel_management/room/room_viewer')}}">Rooms Viewer</a>
         <a class="dropdown-item" href="{{URL::to('/hotel_management/room/room_list')}}">Rooms</a>
         <a class="dropdown-item" href="{{URL::to('/hotel_management/room/room_category_list')}}">Room Category</a>
         <a class="dropdown-item" href="{{URL::to('/hotel_management/reservation/room_reservation_list')}}">Reservation</a>
@@ -124,8 +125,8 @@
             <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Credit Voucher (Auto)</a>
             <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Debit Voucher (Auto)</a>
             <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Journal Voucher (Auto)</a>
-            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Credit Voucher (Manual)</a>
-            <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Debit Voucher (Manual)</a>
+            <a class="dropdown-item" href="{{URL::to('/account/voucher/credit_voucher_manual')}}">Credit Voucher (Manual)</a>
+            <a class="dropdown-item" href="{{URL::to('/account/voucher/debit_voucher_manual')}}">Debit Voucher (Manual)</a>
             <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Contra Voucher (Manual)</a>
             <a class="dropdown-item" href="{{URL::to('/maintenance')}}">Journal Voucher (Manual)</a>
           </div>

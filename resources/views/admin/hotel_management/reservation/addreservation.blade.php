@@ -52,8 +52,8 @@
                     <div class="form-group row">
                       <label for="guest_name" class="col-md-4 col-form-label text-md-left">Guest Name:</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control" id="guest_name" name="guest_name" required>
-                    </div>
+                        <input type="text" class="form-control" id="guest_name" name="guest_name" required>
+                      </div>
                     </div>
 
                     <div class="form-group row">
